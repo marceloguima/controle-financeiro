@@ -7,6 +7,7 @@
 
 :root {
     --azul-principal: #4a90e2;
+    --azul-hover:#377ccc;
     --verde-entrada: #28a745; /* Azul para cabeçalhos e elementos de destaque */
     --verde-sucesso: #50e3c2; /* Verde para indicar receitas e ações positivas */
     --laranja-alerta: #f5a623;
@@ -24,10 +25,17 @@
 body {
     width: 100vw;
     height: 100vh;
+    padding: 0 30px;
     background: var(--cinza-claro);
 }
 .container {
     height: 100vh;
+    width: 100%;
+    
+   
+   
+   
+    
 }
 
 /* inicio header -----------------------------------------*/
@@ -37,8 +45,10 @@ header {
     color: #fff;
     display: flex;
     height: 80px;
-    width: 100%;
+  width: 100%;
     position: fixed;
+    left: 0;
+    right: 0;
     box-shadow: 1px 2px 3px var(--cinza-2);
 }
 
@@ -53,18 +63,19 @@ header {
     font-weight: 600;
 }
 
+
 nav {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 ul {
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
 }
 
 li {
@@ -86,16 +97,26 @@ li {
 
 .dropdown-btn {
     background: transparent;
-    width: 100px;
+    min-width: 200px;
     font-size: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    border-radius: 10px;
+    transition: ease-in 0.2s;
 }
 
-.drop-menu {
+.dropdown-btn:hover {
+    background: #1414144f;
+}
+
+.drop-menu-botoes,
+.drop-menu-campo-filter {
     border-radius: 10px;
     background-color: var(--branco-puro);
+    border: solid 1px var(--cinza-3);
+
     box-shadow: 1px 5px 10px var(--preto-texto);
     min-width: 200px;
     display: flex;
@@ -106,29 +127,100 @@ li {
     display: none;
 }
 
-.drop-menu.show{
-    display: block;
+.drop-menu-botoes.show, .drop-menu-campo-filter.show  {
+    display: flex;
 }
+
+
 
 .btn-opcoes {
     color: var(--preto-texto);
     background: var(--branco-puro);
-    text-align:start;
-    
+    text-align: start;
 }
 
 .btn-opcoes:hover {
-    background: var(--cinza-1);
+    background: var(--cinza-2);
 }
 
-#btn-filtra-por-data{
+
+
+#btn-filtra-por-data {
     border-radius: 10px 10px 0 0;
+}
+
+button a {
+    color: var(--preto-texto);
+    text-decoration: none;
 }
 
 .btn-opcoes.sair {
     color: #c0392b;
     border-radius: 0 0 10px 10px;
 }
+
+
+/* dropdown select para filtro--------------------------- */
+.drop-menu-campo-filter{
+    width: 450px;
+    height: 120px;
+    position: absolute;
+    right: 110px;
+    top: 140px;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    
+   
+}
+
+#div-campo-filter  {
+    width: 95%;
+height: 70px;
+
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    
+}
+
+.campo-label{
+width: 260px;
+display: flex;
+flex-direction: column;
+
+}
+
+.campo-label label{
+   margin: 2px 10px;
+
+}
+ 
+
+
+#campo-filter {
+ 
+    width: 100%;
+    height: 40px;
+    border: solid 1px var(--cinza-texto);
+    background: var(--branco-puro);
+    box-shadow: 1px 2px 3px var(--preto-texto);
+    border-radius: 10px;
+    outline: none;
+    
+}
+
+.botao-azul.filter{
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+   
+}
+
+
 
 /*------------------------------- fim dropdown-------------------------------------- */
 
@@ -138,7 +230,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
 }
 
 /* início seção resumo ---------------------------------*/
@@ -162,8 +253,9 @@ main {
     justify-content: center;
     border: solid 1px var(--cinza-2);
     background: var(--branco-puro);
-    width: 30%;
+    width: 20%;
     height: 60%;
+    min-width: 130px;
     max-width: 320px;
     border-radius: 10px;
     box-shadow: 1px 2px 3px var(--cinza-3);
@@ -271,7 +363,7 @@ select {
     font-weight: 600;
 }
 
-#btn-registrar {
+.botao-azul {
     background: var(--azul-principal);
     color: var(--branco-puro);
     border: none;
@@ -283,6 +375,20 @@ select {
     box-shadow: 1px 2px 3px var(--cinza-3);
 }
 
+.botao-azul:hover{
+    background:var(--azul-hover) ;
+}
+
+.transacoes {
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background: var(--cinza-1);
+    border: solid 1px var(--cinza-2);
+    box-shadow: 1px 2px 3px var(--cinza-2);
+}
+
 /* medias queries */
 
 @media (max-width: 1200px) {
@@ -290,7 +396,7 @@ select {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: 20px;
-        width: 80%;
+        width: 100%;
     }
 
     .campos-de-entrada {
