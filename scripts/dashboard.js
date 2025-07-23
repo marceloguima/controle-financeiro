@@ -16,12 +16,16 @@ formulario.addEventListener("submit", (evento) => {
 const menuDropdownBotoes = document.querySelector(".drop-menu-botoes");
 const MenuSelectFilter = document.querySelector(".drop-menu-campo-filter");
 const iconeAbreMenu = document.querySelector(".icone-seta");
+const overlay = document.querySelector(".overlay-dropdown")
 
 const abreMenu = (menu) => {
     menu.classList.toggle("show");
+     overlay.classList.toggle("active")
     if (menu.classList.contains("show")) {
         iconeAbreMenu.classList.remove("fa-chevron-down");
         iconeAbreMenu.classList.add("fa-chevron-up");
+       
+
     } else {
         iconeAbreMenu.classList.remove("fa-chevron-up");
         iconeAbreMenu.classList.add("fa-chevron-down");

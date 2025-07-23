@@ -7,7 +7,7 @@
 
 :root {
     --azul-principal: #4a90e2;
-    --azul-hover:#377ccc;
+    --azul-hover: #377ccc;
     --verde-entrada: #28a745; /* Azul para cabeçalhos e elementos de destaque */
     --verde-sucesso: #50e3c2; /* Verde para indicar receitas e ações positivas */
     --laranja-alerta: #f5a623;
@@ -28,14 +28,11 @@ body {
     padding: 0 30px;
     background: var(--cinza-claro);
 }
+
 .container {
     height: 100vh;
-    width: 100%;
-    
-   
-   
-   
-    
+    width: 100vw;
+  
 }
 
 /* inicio header -----------------------------------------*/
@@ -45,11 +42,12 @@ header {
     color: #fff;
     display: flex;
     height: 80px;
-  width: 100%;
+    width: 100%;
     position: fixed;
     left: 0;
     right: 0;
     box-shadow: 1px 2px 3px var(--cinza-2);
+    z-index: 11;
 }
 
 .logo {
@@ -62,7 +60,6 @@ header {
     text-decoration: none;
     font-weight: 600;
 }
-
 
 nav {
     width: 100%;
@@ -85,6 +82,7 @@ li {
 /*--------------------------------início dropdown ------------------------------------ */
 .dropdown-container {
     position: relative;
+   
 }
 
 .dropdown-btn,
@@ -116,22 +114,22 @@ li {
     border-radius: 10px;
     background-color: var(--branco-puro);
     border: solid 1px var(--cinza-3);
-
     box-shadow: 1px 5px 10px var(--preto-texto);
     min-width: 200px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 50px;
-    right: -40px;
+    top: 60px;
+    right: -10px;
     display: none;
+    z-index: 12;
 }
 
-.drop-menu-botoes.show, .drop-menu-campo-filter.show  {
+/* adicionando essas classe com js para o dropdown ficar visível */
+.drop-menu-botoes.show,
+.drop-menu-campo-filter.show {
     display: flex;
 }
-
-
 
 .btn-opcoes {
     color: var(--preto-texto);
@@ -142,8 +140,6 @@ li {
 .btn-opcoes:hover {
     background: var(--cinza-2);
 }
-
-
 
 #btn-filtra-por-data {
     border-radius: 10px 10px 0 0;
@@ -159,47 +155,39 @@ button a {
     border-radius: 0 0 10px 10px;
 }
 
-
 /* dropdown select para filtro--------------------------- */
-.drop-menu-campo-filter{
+.drop-menu-campo-filter {
     width: 450px;
     height: 120px;
     position: absolute;
-    right: 110px;
-    top: 140px;
+    right: -30%;
+    left: 30%;
+    top: 270px;
     gap: 10px;
     align-items: center;
     justify-content: space-between;
-    
-   
 }
 
-#div-campo-filter  {
+#div-campo-filter {
     width: 95%;
-height: 70px;
+    height: 70px;
 
     display: flex;
     align-items: end;
     justify-content: space-between;
-    
 }
 
-.campo-label{
-width: 260px;
-display: flex;
-flex-direction: column;
-
+.campo-label {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
 }
 
-.campo-label label{
-   margin: 2px 10px;
-
+.campo-label label {
+    margin: 2px 10px;
 }
- 
-
 
 #campo-filter {
- 
     width: 100%;
     height: 40px;
     border: solid 1px var(--cinza-texto);
@@ -207,21 +195,30 @@ flex-direction: column;
     box-shadow: 1px 2px 3px var(--preto-texto);
     border-radius: 10px;
     outline: none;
-    
 }
 
-.botao-azul.filter{
+.botao-azul.filter {
     min-width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    
-   
 }
 
+.overlay-dropdown {
+    display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000b6; 
+  z-index: 10;
+}
 
-
+.overlay-dropdown.active{
+    display: block;
+}
 /*------------------------------- fim dropdown-------------------------------------- */
 
 /* --------------------------------fim header ---------------------------------------*/
@@ -230,6 +227,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+   
+    
+   
 }
 
 /* início seção resumo ---------------------------------*/
@@ -316,6 +317,8 @@ form {
 }
 
 .tipo-de-transacao {
+    width: 50%;
+
     margin: 20px 0;
 }
 
@@ -375,8 +378,8 @@ select {
     box-shadow: 1px 2px 3px var(--cinza-3);
 }
 
-.botao-azul:hover{
-    background:var(--azul-hover) ;
+.botao-azul:hover {
+    background: var(--azul-hover);
 }
 
 .transacoes {
@@ -403,12 +406,14 @@ select {
         grid-template-columns: 1fr 1fr;
         grid-column: 1 / -1;
         justify-items: center;
+        justify-self: center;
     }
 
     #btn-registrar {
         grid-column: 1 / -1;
         grid-row: 3 / 4;
         max-width: none;
-        margin: 0 150px;
+        width: 438px;
+        justify-self: center;
     }
 }
