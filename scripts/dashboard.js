@@ -14,21 +14,25 @@ formulario.addEventListener("submit", (evento) => {
 
 // ------------------------------------------------------------------
 const menuDropdownBotoes = document.querySelector(".drop-menu-botoes");
-const MenuSelectFilter = document.querySelector(".drop-menu-campo-filter");
+// const MenuSelectFilter = document.querySelector(".container-campo-filter");
 const iconeAbreMenu = document.querySelector(".icone-seta");
-const overlay = document.querySelector(".overlay-dropdown")
+const overlay = document.querySelector(".overlay-dropdown");
+
+const criaOverlay = ()=>{
+    overlay.classList.toggle("active");
+}
 
 const abreMenu = (menu) => {
+  
     menu.classList.toggle("show");
-     overlay.classList.toggle("active")
     if (menu.classList.contains("show")) {
         iconeAbreMenu.classList.remove("fa-chevron-down");
+        
         iconeAbreMenu.classList.add("fa-chevron-up");
-       
-
     } else {
         iconeAbreMenu.classList.remove("fa-chevron-up");
         iconeAbreMenu.classList.add("fa-chevron-down");
+        overlay.classList.remove("active");
     }
 };
 // --------------------------------------------------------------------
@@ -36,24 +40,32 @@ const fechaMenu = (menu) => {
     menu.classList.remove("show");
     iconeAbreMenu.classList.remove("fa-chevron-up");
     iconeAbreMenu.classList.add("fa-chevron-down");
+    overlay.classList.remove("active");
 };
 // --------------------------------------------------------------------
 
-const porCategoria = ` <label for="campo-filter">Categoria</label>
+const porCategoria = `  <div class="campo-label">
+                                <label for="campo-filter">Categoria</label>
                         <select name="" id="categoria">
                             <option value="salario">Meu Salário</option>
                             <option value="freelancer">Freelancer</option>
                             <option value="renda-extra">Renda Extra</option>
                             <option value="outros">Outros</option>
-                        </select>`;
+                        </select>
+                            </div>
+                            <button class="botao-azul filter">Buscar</button>
+                        </div>`;
 
-const porData = ` <label>Selecione a data da transação</label><input type="date">`;
 
-const campoFilter = document.querySelector(".campo-label");
+
+
 const btnCategoria = document.getElementById("btn-categoria");
+const containerParaFiltrar = document.getElementById("container-campo-filter");
 
-const filtra = (escolha) => {
-    campoFilter.innerHTML = escolha;
+const filtraPorData = () => {
+    abreMenu(containerParaFiltrar)
+    containerParaFiltrar.style.display = "flex";
+    containerParaFiltrar.innerHTML =  `<div class="campo-label"><label>Selecione a data da transação</label><input type="date"></div>`;
 };
 
 const limpaCampo = () => {
@@ -142,8 +154,3 @@ function trocaOpcoesSelect(tipo) {
         labelFormaDeTransacao.textContent = "Forma de Pagamento";
     }
 }
-
-const inputParaFiltar = document.getElementById("div-input-filter");
-const filtrar = () => {
-    inputParaFiltar.style.display = "flex";
-};
