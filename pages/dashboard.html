@@ -34,7 +34,7 @@
                             <div class="dropdown-container">
                                 <button
                                     class="dropdown-btn"
-                                    onclick="abreMenu(menuDropdownBotoes)"
+                                    onclick="verTransacoes()"
                                 >
                                     <span>Ver transações</span>
                                     <i
@@ -43,7 +43,6 @@
                                 </button>
                                 <div class="drop-menu-botoes">
                                     <button
-                                        onclick="filtraPorData()"
                                         class="btn-opcoes"
                                         id="btn-filtra-por-data"
                                     >
@@ -51,7 +50,7 @@
                                     </button>
                                     <button
                                         class="btn-opcoes"
-                                        
+                                        id="btn-filtra-por-categoria"
                                     >
                                         Filtrar por categoria
                                     </button>
@@ -62,8 +61,8 @@
                                         <a href="#transacoes">Ver Todas</a>
                                     </button>
                                     <button
-                                        onclick="fechaMenu(menuDropdownBotoes)"
-                                        class="btn-opcoes sair"
+                                        onclick="fechaMenu()"
+                                        class="btn-opcoes fechar"
                                     >
                                         Fechar
                                     </button>
@@ -75,8 +74,8 @@
                     </ul>
 
                     <div class="drop-menu-campo-filter">
-                        <div id="container-campo-filter">
-                            <!-- <div class="campo-label">
+                        <!-- <div id="container-campo-filter"> 
+                         <div class="campo-label">
                                 <label for="campo-filter">Categoria</label>
                         <select name="" id="categoria">
                             <option value="salario">Meu Salário</option>
@@ -87,13 +86,7 @@
                             </div>
                             <button class="botao-azul filter">Buscar</button>
                         </div> -->
-
-                        <button
-                            onclick="fechaMenu(MenuSelectFilter)"
-                            class="btn-opcoes sair"
-                        >
-                            Fechar
-                        </button>
+                        
                     </div>
                 </nav>
             </header>
@@ -195,10 +188,10 @@
                         <div class="campo">
                             <label for="categoria">Escolha uma Categoria</label>
                             <select name="" id="categoria">
-                                <option value="salario">Meu Salário</option>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="renda-extra">Renda Extra</option>
-                                <option value="outros">Outros</option>
+                                <option value="Salário">Meu Salário</option>
+                                <option value="Freelancer">Freelancer</option>
+                                <option value="Renda-extra">Renda Extra</option>
+                                <option value="Outros">Outros</option>
                             </select>
                         </div>
 
@@ -209,9 +202,9 @@
                                 >Forma de Recebimento</label
                             >
                             <select name="" id="forma-transacao">
-                                <option value="pix">Pix</option>
-                                <option value="dinheiro">Dinheiro</option>
-                                <option value="outros">Outros</option>
+                                <option value="Pix">Pix</option>
+                                <option value="Dinheiro">Dinheiro</option>
+                                <option value="Outros">Outros</option>
                             </select>
                         </div>
 
@@ -227,7 +220,36 @@
                 </form>
             </main>
 
-            <section class="transacoes" id="transacoes"></section>
+            <section class="transacoes" id="transacoes">
+                <h3>Minhas Transações</h3>
+                <div class="linha"></div>
+                <p class="mensagem-campo-transacao">
+                   
+                    
+                </p>
+                <div class="container-transacao">
+                    <!-- <div class="transacao">
+                    <div class="div-icon-categoria">
+                         <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                fill="currentColor"
+                                class="bi bi-arrow-up-circle-fill arrow-up"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                                />
+                            </svg>
+                        <h4>Salário</h4>
+                    </div>
+                    <p class="tipo-transacao">Pix</p>
+                    <p class="data-transacao">26/07/2025</p>
+                    <p class="valor-transacao"> R$ 1.111,00</p>
+                </div>-->
+                </div>
+            </section>
         </div>
 
         <script src="../scripts/dashboard.js"></script>

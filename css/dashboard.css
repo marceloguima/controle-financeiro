@@ -30,8 +30,8 @@ body {
 }
 
 .container {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   
 }
 
@@ -116,7 +116,6 @@ li {
     border: solid 1px var(--cinza-3);
     box-shadow: 1px 5px 10px var(--preto-texto);
     min-width: 200px;
-    display: flex;
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -126,8 +125,7 @@ li {
 }
 
 /* adicionando essas classe com js para o dropdown ficar visível */
-.drop-menu-botoes.show,
-.drop-menu-campo-filter.show {
+.show{
     display: flex;
 }
 
@@ -150,7 +148,7 @@ button a {
     text-decoration: none;
 }
 
-.btn-opcoes.sair {
+.fechar {
     color: #c0392b;
     border-radius: 0 0 10px 10px;
 }
@@ -162,16 +160,17 @@ button a {
     position: absolute;
     right: -30%;
     left: 30%;
-    top: 270px;
+    top: 100px;
     gap: 10px;
     align-items: center;
     justify-content: space-between;
+    
 }
+
 
 #container-campo-filter {
     width: 95%;
     height: 70px;
-
     display: flex;
     align-items: end;
     justify-content: space-between;
@@ -227,6 +226,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+  
     
    
     
@@ -277,11 +277,11 @@ main {
     gap: 10px;
 }
 
-.title-card .arrow-up {
+.title-card, .arrow-up {
     color: var(--verde-entrada);
 }
 
-.title-card .arrow-down {
+.title-card, .arrow-down {
     color: var(--vermelho-despesa);
 }
 
@@ -390,6 +390,52 @@ select {
     background: var(--cinza-1);
     border: solid 1px var(--cinza-2);
     box-shadow: 1px 2px 3px var(--cinza-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+   
+}
+
+.transacoes h3{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: var(--preto-texto);
+}
+
+.linha{
+    width: 80%;
+    height: 2px;
+    background-color: var(--cinza-3);
+}
+
+.mensagem-campo-transacoes{
+    text-align: center;
+}
+
+.container-transacao{
+    width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+.transacao{
+    width: 80%;
+    height: 60px;
+    border: solid 2px var(--cinza-3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.div-icon-categoria{
+    display: flex;
+    gap: 10px;
 }
 
 /* medias queries */
