@@ -254,11 +254,11 @@ document.addEventListener("click", (e) => {
     const valor = parseFloat(elementoParaApagar.dataset.valor)
     const tipo = elementoParaApagar.dataset.tipo
 
-      if (tipo === "entrada") {
-            totalReceitas -= valor;
-        } else {
-            totaldespesas -= valor;
-        }
+    //   if (tipo === "entrada") {
+    //         totalReceitas -= valor;
+    //     } else {
+    //         totaldespesas -= valor;
+    //     }
 
         
 
