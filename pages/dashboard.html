@@ -19,6 +19,10 @@
         />
         <!-- meu css -->
         <link rel="stylesheet" href="../css/dashboard.css" />
+
+        <!-- cdn chart.js para gráficos -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
         <title>Finance</title>
     </head>
     <body>
@@ -57,7 +61,10 @@
                                     <button class="btn-opcoes">
                                         Filtrar por tipo
                                     </button>
-                                    <button class="btn-opcoes">
+                                    <button
+                                        class="btn-opcoes"
+                                        onclick="fechaMenu()"
+                                    >
                                         <a href="#transacoes">Ver Todas</a>
                                     </button>
                                     <button
@@ -65,6 +72,7 @@
                                         class="btn-opcoes fechar"
                                     >
                                         Fechar
+                                        <i class="fa-solid fa-chevron-up"></i>
                                     </button>
                                 </div>
                             </div>
@@ -86,7 +94,6 @@
                             </div>
                             <button class="botao-azul filter">Buscar</button>
                         </div> -->
-                        
                     </div>
                 </nav>
             </header>
@@ -221,12 +228,9 @@
             </main>
 
             <section class="transacoes" id="transacoes">
-                <h3>Minhas Transações</h3>
+                <h3>Minhas transações</h3>
                 <div class="linha"></div>
-                <p class="mensagem-campo-transacao">
-                   
-                    
-                </p>
+                <p class="mensagem-campo-transacao"></p>
                 <div class="container-transacao">
                     <!-- <div class="transacao">
                     <div class="div-icon-categoria">
@@ -247,10 +251,13 @@
                     <p class="tipo-transacao">Pix</p>
                     <p class="data-transacao">26/07/2025</p>
                     <p class="valor-transacao"> R$ 1.111,00</p>
+                    <button>Excluir</button>
                 </div>-->
                 </div>
             </section>
         </div>
+
+    
 
         <script src="../scripts/dashboard.js"></script>
     </body>

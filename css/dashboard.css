@@ -211,7 +211,8 @@ button a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000000b6; 
+  background-color: #000000; 
+  opacity: .7;
   z-index: 10;
 }
 
@@ -384,7 +385,7 @@ select {
 
 .transacoes {
     width: 100%;
-    height: 300px;
+    height: auto;
     margin-top: 40px;
     border-radius: 10px;
     background: var(--cinza-1);
@@ -394,12 +395,12 @@ select {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding: 50px;
    
 }
 
 .transacoes h3{
     text-align: center;
-    margin-top: 20px;
     font-size: 1.5rem;
     color: var(--preto-texto);
 }
@@ -431,13 +432,42 @@ select {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    color: var(--preto-texto);
 }
 
 .div-icon-categoria{
     display: flex;
     gap: 10px;
+    width: 20%;
+  
 }
 
+
+.transacao p{
+    width: 15%;
+}
+
+.valor-transacao{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.btn-excluir-transacao{
+    width: 100px;
+    height: 40px;
+    border: solid 2px var(--vermelho-despesa);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: ease .4s;
+    color: var(--preto-texto);
+}
+
+.btn-excluir-transacao:hover{
+    background: var(--vermelho-despesa);
+    color: var(--branco-puro);
+}
 /* medias queries */
 
 @media (max-width: 1200px) {
