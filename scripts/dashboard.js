@@ -232,7 +232,7 @@ const criaTransacao = () => {
     }
 
     // criando a transação de fato
-    transacao.innerHTML += ` <div class="transacao">
+    transacao.innerHTML += ` <div class="transacao" data-valor=${valorDigitado} data-tipo${valorRadio}>
     <div class="div-icon-categoria">
     ${icon}
     <h4>${categoriaDaTransacao}</h4>
@@ -242,8 +242,7 @@ const criaTransacao = () => {
     <p class="valor-transacao"> R$ ${valorDigitado}</p>
     <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
     </div>
-    </section>
-    </div>
+    
     `;
 };
 
@@ -251,6 +250,17 @@ const criaTransacao = () => {
 document.addEventListener("click", (e) => {
     const elementoClicado = e.target;
     const elementoParaApagar = elementoClicado.closest("div");
+
+    const valor = parseFloat(elementoParaApagar.dataset.valor)
+    const tipo = elementoParaApagar.dataset.tipo
+
+      if (tipo === "entrada") {
+            totalReceitas -= valor;
+        } else {
+            totaldespesas -= valor;
+        }
+
+        
 
     if (elementoClicado.classList.contains("btn-excluir-transacao")) {
         elementoParaApagar.remove();
