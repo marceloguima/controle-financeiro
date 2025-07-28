@@ -32,7 +32,6 @@ body {
 .container {
     height: 100%;
     width: 100%;
-  
 }
 
 /* inicio header -----------------------------------------*/
@@ -82,7 +81,6 @@ li {
 /*--------------------------------início dropdown ------------------------------------ */
 .dropdown-container {
     position: relative;
-   
 }
 
 .dropdown-btn,
@@ -125,7 +123,7 @@ li {
 }
 
 /* adicionando essas classe com js para o dropdown ficar visível */
-.show{
+.show {
     display: flex;
 }
 
@@ -164,9 +162,7 @@ button a {
     gap: 10px;
     align-items: center;
     justify-content: space-between;
-    
 }
-
 
 #container-campo-filter {
     width: 95%;
@@ -206,17 +202,17 @@ button a {
 
 .overlay-dropdown {
     display: none;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000; 
-  opacity: .7;
-  z-index: 10;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.7;
+    z-index: 10;
 }
 
-.overlay-dropdown.active{
+.overlay-dropdown.active {
     display: block;
 }
 /*------------------------------- fim dropdown-------------------------------------- */
@@ -227,11 +223,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-  
-    
-   
-    
-   
 }
 
 /* início seção resumo ---------------------------------*/
@@ -278,11 +269,13 @@ main {
     gap: 10px;
 }
 
-.title-card, .arrow-up {
+.title-card,
+.arrow-up {
     color: var(--verde-entrada);
 }
 
-.title-card, .arrow-down {
+.title-card,
+.arrow-down {
     color: var(--vermelho-despesa);
 }
 
@@ -396,35 +389,36 @@ select {
     align-items: center;
     gap: 20px;
     padding: 50px;
-   
 }
 
-.transacoes h3{
+.transacoes h3 {
     text-align: center;
     font-size: 1.5rem;
     color: var(--preto-texto);
 }
 
-.linha{
-    width: 80%;
+.linha {
+    width: 100%;
+    max-width: 800px;
     height: 2px;
     background-color: var(--cinza-3);
 }
 
-.mensagem-campo-transacoes{
+.mensagem-campo-transacoes {
     text-align: center;
 }
 
-.container-transacao{
+.container-transacao {
     width: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.transacao{
-    width: 80%;
+.transacao {
+    width: 100%;
+    max-width: 800px;
     height: 60px;
     border: solid 2px var(--cinza-3);
     border-radius: 10px;
@@ -435,24 +429,22 @@ select {
     color: var(--preto-texto);
 }
 
-.div-icon-categoria{
+.div-icon-categoria {
     display: flex;
     gap: 10px;
     width: 20%;
-  
 }
 
-
-.transacao p{
+.transacao p {
     width: 15%;
 }
 
-.valor-transacao{
+.valor-transacao {
     font-size: 1.2rem;
     font-weight: 600;
 }
 
-.btn-excluir-transacao{
+.btn-excluir-transacao {
     width: 100px;
     height: 40px;
     border: solid 2px var(--vermelho-despesa);
@@ -460,11 +452,11 @@ select {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
-    transition: ease .4s;
+    transition: ease 0.4s;
     color: var(--preto-texto);
 }
 
-.btn-excluir-transacao:hover{
+.btn-excluir-transacao:hover {
     background: var(--vermelho-despesa);
     color: var(--branco-puro);
 }
@@ -491,5 +483,58 @@ select {
         max-width: none;
         width: 438px;
         justify-self: center;
+    }
+}
+
+@media (max-width: 780px) {
+    .transacoes{
+        padding: 30px;
+    }
+
+    .transacao{
+        height: auto;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto;
+
+    }
+
+    .div-icon-categoria{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    .btn-excluir-transacao{
+        grid-column: 3 / 4;
+    
+    }
+
+  
+    .valor-transacao {
+        grid-column: 2 / 3;
+        width: 100px !important;
+        
+    }
+    
+  .forma-transacao{
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        font-weight: 600;
+    }
+
+
+    .data-transacao{
+        grid-column: 1 / 2;
+        grid-row: 2 / 3 ;
+        margin-left: 30px;
+    }
+
+    body{
+        padding: 0 10px;
+    }
+}
+
+@media(max-width:460px){
+    .transacoes{
+        padding: 5px;
     }
 }

@@ -1,116 +1,123 @@
+
+// Referências aos elementos de resumo financeiro (cards)
 const cardReceitas = document.getElementById("total-entradas");
 const cardSaidas = document.getElementById("total-despesas");
 const cardSaldo = document.getElementById("saldo");
 
+// Input de valor da transação
 const valorInserido = document.getElementById("valor");
 
+// Referência ao formulário de cadastro
 const formulario = document.querySelector("form");
 
+// Lista de transações (base para renderizar e salvar)
+let listaDeTransacoes = [];
+
+// Evento de envio do formulário
 formulario.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-    mostraResumo();
+    evento.preventDefault(); // evita recarregamento da página
+    mostraResumo();          // processa os dados da transação
 });
 
-// ------------------------------------------------------------------
+// Dropdown e overlay
 const btnVerTransacoes = document.querySelector(".dropdown-btn");
 const menuDropdownBotoes = document.querySelector(".drop-menu-botoes");
 const iconeAbreMenu = document.querySelector(".icone-seta");
 const overlay = document.querySelector(".overlay-dropdown");
 
-// --------------------------------------------------------------------
-
+// Botões de filtro
 const btnFiltraData = document.getElementById("btn-filtra-por-data");
 const btnFiltraCategoria = document.getElementById("btn-filtra-por-categoria");
 const containerParaFiltrar = document.querySelector(".drop-menu-campo-filter");
 
+// Abre menu dropdown
 const verTransacoes = () => {
     menuDropdownBotoes.classList.add("show");
     overlay.classList.add("active");
 };
 
+// Fecha menu dropdown
 const fechaMenu = () => {
     menuDropdownBotoes.classList.remove("show");
     overlay.classList.remove("active");
 };
 
-// evento para filtrar por data
+// Filtro por data
 btnFiltraData.addEventListener("click", () => {
     filtraPorData();
 });
 
 function filtraPorData() {
-    containerParaFiltrar.innerHTML = ` 
+    containerParaFiltrar.innerHTML = `
     <div id="container-campo-filter">
-    <div class="campo-label">
-    <label>Selecione a data da transação</label
-    ><input type="date" />
+        <div class="campo-label">
+            <label>Selecione a data da transação</label>
+            <input type="date" />
+        </div>
+        <button class="botao-azul filter">Buscar</button> 
     </div>
-    <button class="botao-azul filter">Buscar</button> 
-    </div>
-    <button  onclick="fechaCampoFiltro()"
-    class="btn-opcoes fechar">
-    Fechar
-    </button>
-    `;
+    <button onclick="fechaCampoFiltro()" class="btn-opcoes fechar">Fechar</button>`;
     fechaMenu();
     abreCampoFilter();
 }
 
+// Filtro por categoria
 btnFiltraCategoria.addEventListener("click", () => {
     filtraPorCategoria();
 });
 
 const filtraPorCategoria = () => {
-    containerParaFiltrar.innerHTML = ` <div id="container-campo-filter"> 
-    <div class="campo-label">
-    <label for="campo-filter">Categoria</label>
-    <select name="" id="categoria">
-    <option value="salario">Meu Salário</option>
-    <option value="freelancer">Freelancer</option>
-    <option value="renda-extra">Renda Extra</option>
-    <option value="Moradia">Moradia</option>
-    <option value="Mercado">Mercado</option>
-    <option value="Saude">Saúde</option>
-    <option value="Educacao">Educação</option>
-    <option value="Transporte">Transporte</option>
-    <option value="Lazer">Lazer</option>                                
-    <option value="outros">Outros</option>
-    </select>
+    containerParaFiltrar.innerHTML = `
+    <div id="container-campo-filter"> 
+        <div class="campo-label">
+            <label for="campo-filter">Categoria</label>
+            <select name="" id="categoria">
+                <option value="salario">Meu Salário</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="renda-extra">Renda Extra</option>
+                <option value="Moradia">Moradia</option>
+                <option value="Mercado">Mercado</option>
+                <option value="Saude">Saúde</option>
+                <option value="Educacao">Educação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Lazer">Lazer</option>                                
+                <option value="outros">Outros</option>
+            </select>
+        </div>
+        <button class="botao-azul filter">Buscar</button>
     </div>
-    <button class="botao-azul filter">Buscar</button>
-    </div>
-    <button  onclick="fechaCampoFiltro()"
-    class="btn-opcoes fechar">
-    Fechar
-    </button>`;
+    <button onclick="fechaCampoFiltro()" class="btn-opcoes fechar">Fechar</button>`;
     fechaMenu();
     abreCampoFilter();
 };
 
+// Abre área de filtro
 const abreCampoFilter = () => {
     containerParaFiltrar.classList.add("show");
     overlay.classList.add("active");
     btnVerTransacoes.disabled = true;
 };
 
+// Fecha área de filtro
 const fechaCampoFiltro = () => {
     containerParaFiltrar.classList.remove("show");
     overlay.classList.remove("active");
     btnVerTransacoes.disabled = false;
 };
 
+// Limpa campo de valor
 const limpaCampo = () => {
     valorInserido.value = "";
 };
 
+// Totais acumulados
 let totalReceitas = 0;
 let totaldespesas = 0;
 
+// Processa transação ao submeter
 const mostraResumo = () => {
     const valorDigitado = parseFloat(valorInserido.value.trim());
-    const valorRadio = document.querySelector(
-        'input[name="transacao"]:checked'
-    );
+    const valorRadio = document.querySelector('input[name="transacao"]:checked');
     const tipoTransacaoEscolhida = valorRadio.value;
 
     if (isNaN(valorDigitado) || valorDigitado <= 0) {
@@ -126,11 +133,13 @@ const mostraResumo = () => {
     } else {
         totaldespesas += valorDigitado;
     }
+
     atualizaResumo();
     criaTransacao();
     limpaCampo();
 };
 
+// Atualiza os cards de resumo
 const atualizaResumo = () => {
     const saldoAtual = totalReceitas - totaldespesas;
     cardReceitas.textContent = `R$ ${totalReceitas.toFixed(2)}`;
@@ -138,13 +147,14 @@ const atualizaResumo = () => {
     cardSaldo.textContent = `R$ ${saldoAtual.toFixed(2)}`;
 };
 
+// Referências de elementos do formulário
 const categoria = document.getElementById("categoria");
 const formaDeTransacao = document.getElementById("forma-transacao");
-
 const radioEntrada = document.getElementById("tipo-entrada");
 const radioSaida = document.getElementById("tipo-saida");
 const labelFormaDeTransacao = document.getElementById("label-forma-transacao");
 
+// Troca opções de acordo com o tipo (entrada/saída)
 radioEntrada.addEventListener("change", () => trocaOpcoesSelect("entrada"));
 radioSaida.addEventListener("change", () => trocaOpcoesSelect("saida"));
 
@@ -152,123 +162,161 @@ function trocaOpcoesSelect(tipo) {
     categoria.innerHTML = "";
 
     if (tipo === "entrada") {
-        categoria.innerHTML = ` <option value="Salário">Meu Salário</option>
-                                <option value="Freelancer">Freelancer</option>
-                                <option value="Renda-Extra">Renda Extra</option>
-                                <option value="Outros">Outros</option>`;
+        categoria.innerHTML = `
+            <option value="Salário">Meu Salário</option>
+            <option value="Freelancer">Freelancer</option>
+            <option value="Renda-Extra">Renda Extra</option>
+            <option value="Outros">Outros</option>`;
 
-        formaDeTransacao.innerHTML = ` <option value="Pix">Pix</option>
-                                <option value="Dinheiro">Dinheiro</option>
-                                <option value="Outros">Outros</option>`;
+        formaDeTransacao.innerHTML = `
+            <option value="Pix">Pix</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Outros">Outros</option>`;
 
         labelFormaDeTransacao.textContent = "Forma de Recebimento";
     } else {
         categoria.innerHTML = `
-                                    <option value="Moradia">Moradia</option>
-                                    <option value="Mercado">Mercado</option>
-                                    <option value="Saude">Saúde</option>
-                                    <option value="Educacao">Educação</option>
-                                    <option value="Transporte">Transporte</option>
-                                    <option value="Lazer">Lazer</option>
-                                    <option value="Outros">Outros</option>
-                               `;
+            <option value="Moradia">Moradia</option>
+            <option value="Mercado">Mercado</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Saude">Saúde</option>
+            <option value="Educacao">Educação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Outros">Outros</option>`;
 
-        formaDeTransacao.innerHTML = ` <option value="Pix">Pix</option>
-                                <option value="Dinheiro">Dinheiro</option>
-                                <option value="Debito">Débito</option>
-                                <option value="Credito">Crédito</option>
-                                  <option value="Boleto">Boleto</option>
-                              
-                                `;
+        formaDeTransacao.innerHTML = `
+            <option value="Pix">Pix</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Debito">Débito</option>
+            <option value="Credito">Crédito</option>
+            <option value="Boleto">Boleto</option>`;
+
         labelFormaDeTransacao.textContent = "Forma de Pagamento";
     }
 }
 
-
+// Configurações para a data padrão no input
 const formaDaTransacao = document.getElementById("forma-transacao");
+const containerTransacao = document.querySelector(".container-transacao");
 const data = document.getElementById("data");
-const transacao = document.querySelector(".container-transacao");
 
+const definirDataAtualComoPadrao = () => {
+    const hoje = new Date();
+    hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
+    const dataFormatadaParaInput = hoje.toISOString().split("T")[0];
+    data.value = dataFormatadaParaInput;
+};
+
+definirDataAtualComoPadrao();
+
+// Utilitário para formatar data (de ISO para BR)
+const formatarDataParaExibicao = (dataISO) => {
+    if (!dataISO) return "";
+    const [ano, mes, dia] = dataISO.split("-");
+    return `${dia}/${mes}/${ano}`;
+};
+
+// Cria objeto de transação, adiciona na lista, salva e exibe
 const criaTransacao = () => {
     const valorDigitado = parseFloat(valorInserido.value.trim());
     const formaSelecionda = formaDaTransacao.value;
     const diaDaTransacao = data.value;
     const categoriaDaTransacao = categoria.value;
-    const valorRadio = document.querySelector(
-        'input[name="transacao"]:checked'
-    ).value;
+    const valorRadio = document.querySelector('input[name="transacao"]:checked').value;
 
+    const novaTransacao = {
+        valor: valorDigitado,
+        forma: formaSelecionda,
+        data: diaDaTransacao,
+        categoria: categoriaDaTransacao,
+        tipo: valorRadio,
+    };
 
-    // condição para o ícone, se for entrada, arrow up (seta pra cima)
-    //  se for saída, arrow down (seta pra baixo) 
-    let icon = "";
-
-    if (valorRadio === "entrada") {
-        icon = `<svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="currentColor"
-        class="bi bi-arrow-up-circle-fill arrow-up"
-        viewBox="0 0 16 16"
-        >
-        <path
-        d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-        />
-        </svg>`;
-    } else {
-        icon = ` <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="currentColor"
-        class="bi bi-arrow-down-circle-fill arrow-down"
-        viewBox="0 0 16 16"
-        >
-        <path
-        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
-        />
-        </svg>`;
-    }
-
-    // criando a transação de fato
-    transacao.innerHTML += ` <div class="transacao" data-valor=${valorDigitado} data-tipo${valorRadio}>
-    <div class="div-icon-categoria">
-    ${icon}
-    <h4>${categoriaDaTransacao}</h4>
-    </div>
-    <p class="forma-transacao">${formaSelecionda}</p>
-    <p class="data-transacao">${diaDaTransacao}</p>
-    <p class="valor-transacao"> R$ ${valorDigitado}</p>
-    <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
-    </div>
-    
-    `;
+    listaDeTransacoes.push(novaTransacao);
+    salvarTransacaoNoStorage();
+    renderizarTransacao(novaTransacao);
 };
 
-// apagar transação--------------------
-document.addEventListener("click", (e) => {
-    const elementoClicado = e.target;
-    const elementoParaApagar = elementoClicado.closest("div");
+// Salva transações no localStorage
+const salvarTransacaoNoStorage = () => {
+    localStorage.setItem("transacoes", JSON.stringify(listaDeTransacoes));
+};
 
-    const valor = parseFloat(elementoParaApagar.dataset.valor)
-    const tipo = elementoParaApagar.dataset.tipo
+// Carrega dados do localStorage ao abrir a página
+const carregarTransacoesDoStorage = () => {
+    const dados = localStorage.getItem("transacoes");
 
-    //   if (tipo === "entrada") {
-    //         totalReceitas -= valor;
-    //     } else {
-    //         totaldespesas -= valor;
-    //     }
+    if (dados) {
+        listaDeTransacoes = JSON.parse(dados);
+        listaDeTransacoes.forEach((transacao) => {
+            renderizarTransacao(transacao);
+            if (transacao.tipo === "entrada") {
+                totalReceitas += transacao.valor;
+            } else {
+                totaldespesas += transacao.valor;
+            }
+        });
 
-        
-
-    if (elementoClicado.classList.contains("btn-excluir-transacao")) {
-        elementoParaApagar.remove();
+        mensagemSemTransacao();
+        atualizaResumo();
     }
-   
+};
+
+// Mostra mensagem se não houver transações
+const mensagemSemTransacao = () => {
+    const campoMensagem = document.querySelector(".mensagem-campo-transacao");
+    campoMensagem.textContent = listaDeTransacoes.length === 0 ? "Nenhuma transação no momento" : "";
+};
+
+// Insere visualmente a transação no DOM
+const renderizarTransacao = (transacao) => {
+    const dataFormatada = formatarDataParaExibicao(transacao.data);
+
+    const icon = transacao.tipo === "entrada"
+        ? `<i class="fa-solid fa-circle-arrow-up arrow-up"></i>`
+        : `<i class="fa-solid fa-circle-arrow-down arrow-down"></i>`;
+
+    containerTransacao.innerHTML += `
+    <div class="transacao" data-valor="${transacao.valor}" data-tipo="${transacao.tipo}">
+        <div class="div-icon-categoria">
+            ${icon}
+            <h4>${transacao.categoria}</h4>
+        </div>
+        <p class="forma-transacao">${transacao.forma}</p>
+        <p class="data-transacao">${dataFormatada}</p>
+        <p class="valor-transacao"> R$ ${transacao.valor}</p>
+        <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i>Excluir</button>
+    </div>`;
+};
+
+// Evento para excluir transação
+document.addEventListener("click", (e) => {
+    const elementoClicado = e.target.closest(".btn-excluir-transacao");
+
+    if (elementoClicado) {
+        const transacaoParaApagar = elementoClicado.closest(".transacao");
+
+        const valor = parseFloat(transacaoParaApagar.dataset.valor);
+        const tipo = transacaoParaApagar.dataset.tipo;
+
+        listaDeTransacoes = listaDeTransacoes.filter(
+            (t) => !(t.valor === valor && t.tipo === tipo)
+        );
+
+        salvarTransacaoNoStorage();
+
+        if (tipo === "entrada") {
+            totalReceitas -= valor;
+        } else {
+            totaldespesas -= valor;
+        }
+
+        atualizaResumo();
+        transacaoParaApagar.remove();
+        mensagemSemTransacao();
+    }
 });
 
-const mensagemSemTransacao = document.querySelector(".mensagem-campo-transacao");
-
-
-
+// Inicializa carregando as transações salvas
+carregarTransacoesDoStorage();
