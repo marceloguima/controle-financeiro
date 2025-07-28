@@ -249,7 +249,6 @@ main {
     height: 60%;
     width: 25%;
     min-width: 200px;
-    
     border-radius: 10px;
     box-shadow: 1px 2px 3px var(--cinza-3);
 }
@@ -311,9 +310,11 @@ form {
 }
 
 .tipo-de-transacao {
-    width: 50%;
-
+    width: 200px;
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tipo-de-transacao h3 {
@@ -418,7 +419,7 @@ select {
 
 .transacao {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     height: 60px;
     border: solid 2px var(--cinza-3);
     border-radius: 10px;
@@ -467,7 +468,7 @@ select {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: 20px;
-        width: 100%;
+    
     }
 
     .campos-de-entrada {
@@ -543,6 +544,8 @@ select {
         row-gap: 15px;
     }
 
+   
+
     .receita{
         grid-column: 1 / 2;
         height: 70px;
@@ -562,20 +565,46 @@ select {
         
     }
 
+    .tipo-de-transacao{
+       justify-self: center;
+        
+    }
+
     .campos-de-entrada{
         grid-template-columns: auto;
-        width: 100%;
-        padding: 10px;
+        /* max-width: 400px;
+       width: 100%;
+        padding: 30px;  */
     }
+    
+   .botao-e-campos-de-entrada{
+      max-width: 310px !important;
+       width: 100%;
+        /* padding: 10px; */
+   }
 
     .campo{
         width: 100%;
         max-width: none;
+
     }
 }
 
 @media(max-width:460px){
+
+   
+
+     .card.despesa, .card.receita{
+       min-width: 140px;
+      
+      
+    }
     .transacoes{
         padding: 5px;
+    }
+
+    .campo{
+        width: 100%;
+    
     }
 }
