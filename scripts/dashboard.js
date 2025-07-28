@@ -70,7 +70,7 @@ const filtraPorCategoria = () => {
     containerParaFiltrar.innerHTML = `
     <div id="container-campo-filter"> 
         <div class="campo-label">
-            <label for="campo-filter">Categoria</label>
+            <label for="categoria">Categoria</label>
             <select name="" id="categoria">
                 <option value="salario">Meu Salário</option>
                 <option value="freelancer">Freelancer</option>
@@ -287,6 +287,8 @@ const renderizarTransacao = (transacao) => {
         <p class="data-transacao">${dataFormatada}</p>
         <p class="valor-transacao"> R$ ${transacao.valor}</p>
         <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i>Excluir</button>
+                <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
+
     </div>`;
 };
 

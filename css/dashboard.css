@@ -116,7 +116,7 @@ li {
     min-width: 200px;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 0;
     right: -10px;
     display: none;
     z-index: 12;
@@ -125,6 +125,7 @@ li {
 /* adicionando essas classe com js para o dropdown ficar visível */
 .show {
     display: flex;
+    top: 60px;
 }
 
 .btn-opcoes {
@@ -180,6 +181,7 @@ button a {
 
 .campo-label label {
     margin: 2px 10px;
+    color: #000000;
 }
 
 #campo-filter {
@@ -461,6 +463,10 @@ select {
     background: var(--vermelho-despesa);
     color: var(--branco-puro);
 }
+
+.btn-excluir-transacao.mobile {
+    display: none;
+}
 /* medias queries */
 
 @media (max-width: 1200px) {
@@ -468,7 +474,6 @@ select {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: 20px;
-    
     }
 
     .campos-de-entrada {
@@ -488,123 +493,149 @@ select {
 }
 
 @media (max-width: 780px) {
-    .transacoes{
+    .transacoes {
         padding: 30px;
     }
 
-    .transacao{
+    .transacao {
         height: auto;
         display: grid;
         grid-template-columns: auto auto auto;
         grid-template-rows: auto auto;
-
     }
 
-    .div-icon-categoria{
+    .div-icon-categoria {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
     }
-    .btn-excluir-transacao{
+    .btn-excluir-transacao {
         grid-column: 3 / 4;
-    
     }
 
-  
     .valor-transacao {
         grid-column: 2 / 3;
         width: 100px !important;
-        
     }
-    
-  .forma-transacao{
-        grid-column: 1 / 2;
+
+    .forma-transacao {
+        grid-column: 2 / 3;
         grid-row: 2 / 3;
         font-weight: 600;
     }
 
-
-    .data-transacao{
+    .data-transacao {
         grid-column: 1 / 2;
-        grid-row: 2 / 3 ;
-        margin-left: 30px;
+        grid-row: 2 / 3;
+        /* margin-left: 30px; */
     }
 
-    body{
+    body {
         padding: 0 10px;
     }
 }
 
-@media(max-width:660px){
-    .cards-resumo{
+@media (max-width: 660px) {
+
+    .drop-menu-botoes{
+    right: 100px;
+    }
+
+
+    .drop-menu-campo-filter {
+        width: 250px;
+        height: 200px;
+        margin-right: 230px;
+     
+    }
+
+    #container-campo-filter {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .campo-label {
+        width: 100%;
+        height: auto;
+    }
+
+    .botao-azul.filter {
+        width: 100%;
+    }
+
+    .cards-resumo {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
-        padding:  20px 0;
+        padding: 20px 0;
         height: auto;
         row-gap: 15px;
     }
 
-   
-
-    .receita{
+    .receita {
         grid-column: 1 / 2;
         height: 70px;
-        
     }
 
-    .despesa{
+    .despesa {
         grid-column: 2 / 3;
         height: 70px;
-       
     }
 
-   .total{
+    .total {
         grid-column: 1 / -1;
         width: 100%;
         height: 60px;
-        
     }
 
-    .tipo-de-transacao{
-       justify-self: center;
-        
+    .tipo-de-transacao {
+        justify-self: center;
     }
 
-    .campos-de-entrada{
+    .campos-de-entrada {
         grid-template-columns: auto;
         /* max-width: 400px;
        width: 100%;
         padding: 30px;  */
     }
-    
-   .botao-e-campos-de-entrada{
-      max-width: 310px !important;
-       width: 100%;
-        /* padding: 10px; */
-   }
 
-    .campo{
+    .botao-e-campos-de-entrada {
+        max-width: 310px !important;
+        width: 100%;
+        /* padding: 10px; */
+    }
+
+    .campo {
         width: 100%;
         max-width: none;
+    }
 
+    .btn-excluir-transacao {
+        display: none;
+    }
+
+    .btn-excluir-transacao.mobile {
+        width: 40px;
+        display: block;
     }
 }
 
-@media(max-width:460px){
+@media (max-width: 460px) {
 
-   
-
-     .card.despesa, .card.receita{
-       min-width: 140px;
-      
-      
+ 
+    .card.despesa,
+    .card.receita {
+        min-width: 140px;
     }
-    .transacoes{
+    .transacoes {
         padding: 5px;
     }
 
-    .campo{
+    .campo {
         width: 100%;
-    
     }
 }
