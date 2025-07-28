@@ -246,10 +246,10 @@ main {
     justify-content: center;
     border: solid 1px var(--cinza-2);
     background: var(--branco-puro);
-    width: 20%;
     height: 60%;
-    min-width: 130px;
-    max-width: 320px;
+    width: 25%;
+    min-width: 200px;
+    
     border-radius: 10px;
     box-shadow: 1px 2px 3px var(--cinza-3);
 }
@@ -530,6 +530,47 @@ select {
 
     body{
         padding: 0 10px;
+    }
+}
+
+@media(max-width:660px){
+    .cards-resumo{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        padding:  20px 0;
+        height: auto;
+        row-gap: 15px;
+    }
+
+    .receita{
+        grid-column: 1 / 2;
+        height: 70px;
+        
+    }
+
+    .despesa{
+        grid-column: 2 / 3;
+        height: 70px;
+       
+    }
+
+   .total{
+        grid-column: 1 / -1;
+        width: 100%;
+        height: 60px;
+        
+    }
+
+    .campos-de-entrada{
+        grid-template-columns: auto;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .campo{
+        width: 100%;
+        max-width: none;
     }
 }
 
