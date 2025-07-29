@@ -292,7 +292,7 @@ const renderizarTransacao = (transacao) => {
         <p class="forma-transacao">${transacao.forma}</p>
         <p class="data-transacao">${dataFormatada}</p>
         <p class="valor-transacao"> R$ ${transacao.valor}</p>
-        <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i>Excluir</button>
+        <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
                 <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
 
     </div>`;

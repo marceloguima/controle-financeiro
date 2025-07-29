@@ -1,0 +1,55 @@
+@import url('dashboard.css');
+
+body{
+    width: 100vw;
+    background: var(--cinza-claro);
+}
+
+
+img{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 5rem;
+    color: var(--laranja-alerta);
+    text-align: center;
+}
+
+p{
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 30px 0 100px 0;
+    
+}
+
+a{
+    text-decoration: none;
+    color: var(--branco-puro);
+    background: var(--azul-principal);
+    font-size: 3rem;
+    padding: 40px 360px;
+    border-radius: 20px;
+    display: block;
+   
+}
+
+
+
+
+/*    --azul-principal: #4a90e2;
+    --azul-hover: #377ccc;
+    --verde-entrada: #28a745; 
+    --verde-sucesso: #50e3c2; 
+    --laranja-alerta: #f5a623;
+    --vermelho-saida: #dc3545; 
+    --vermelho-despesa: #d0021b; 
+    --cinza-texto: #4a4a4a;
+    --preto-texto: #222222;
+    --cinza-texto-claro: #777; 
+    --cinza-1: #f3f3f3;
+    --cinza-2: #cac8c8;
+    --cinza-3: #b3b3b3; 
+    --branco-puro: #ffffff; / */
