@@ -68,7 +68,7 @@ nav {
 }
 
 ul {
-    width: 40%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -337,7 +337,6 @@ form {
 .campos-de-entrada {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    /* grid-template-rows: auto; */
     gap: 30px;
     grid-column: 1 / 2;
     align-items: end;
@@ -430,6 +429,10 @@ select {
     align-items: center;
     padding: 10px;
     color: var(--preto-texto);
+}
+
+.transacao.active{
+    border: solid 2px var(--vermelho-despesa);
 }
 
 .div-icon-categoria {
@@ -537,14 +540,14 @@ select {
 @media (max-width: 660px) {
 
     .drop-menu-botoes{
-    right: 100px;
+    right: 40px;
     }
 
 
     .drop-menu-campo-filter {
         width: 250px;
         height: 200px;
-        margin-right: 230px;
+    left: 80px;
      
     }
 
@@ -598,9 +601,7 @@ select {
 
     .campos-de-entrada {
         grid-template-columns: auto;
-        /* max-width: 400px;
-       width: 100%;
-        padding: 30px;  */
+       
     }
 
     .botao-e-campos-de-entrada {
@@ -636,6 +637,10 @@ select {
     }
 
     .campo {
+        width: 100%;
+    }
+
+    #data{
         width: 100%;
     }
 }

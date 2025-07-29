@@ -1,4 +1,3 @@
-
 // Referências aos elementos de resumo financeiro (cards)
 const cardReceitas = document.getElementById("total-entradas");
 const cardSaidas = document.getElementById("total-despesas");
@@ -16,7 +15,7 @@ let listaDeTransacoes = [];
 // Evento de envio do formulário
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault(); // evita recarregamento da página
-    mostraResumo();          // processa os dados da transação
+    mostraResumo(); // processa os dados da transação
 });
 
 // Dropdown e overlay
@@ -31,7 +30,7 @@ const btnFiltraCategoria = document.getElementById("btn-filtra-por-categoria");
 const containerParaFiltrar = document.querySelector(".drop-menu-campo-filter");
 
 // Abre menu dropdown
-const verTransacoes = () => {
+const abreDropOpcoes = () => {
     menuDropdownBotoes.classList.add("show");
     overlay.classList.add("active");
 };
@@ -117,7 +116,9 @@ let totaldespesas = 0;
 // Processa transação ao submeter
 const mostraResumo = () => {
     const valorDigitado = parseFloat(valorInserido.value.trim());
-    const valorRadio = document.querySelector('input[name="transacao"]:checked');
+    const valorRadio = document.querySelector(
+        'input[name="transacao"]:checked'
+    );
     const tipoTransacaoEscolhida = valorRadio.value;
 
     if (isNaN(valorDigitado) || valorDigitado <= 0) {
@@ -223,7 +224,9 @@ const criaTransacao = () => {
     const formaSelecionda = formaDaTransacao.value;
     const diaDaTransacao = data.value;
     const categoriaDaTransacao = categoria.value;
-    const valorRadio = document.querySelector('input[name="transacao"]:checked').value;
+    const valorRadio = document.querySelector(
+        'input[name="transacao"]:checked'
+    ).value;
 
     const novaTransacao = {
         valor: valorDigitado,
@@ -235,6 +238,7 @@ const criaTransacao = () => {
 
     listaDeTransacoes.push(novaTransacao);
     salvarTransacaoNoStorage();
+    mensagemSemTransacao();
     renderizarTransacao(novaTransacao);
 };
 
@@ -266,16 +270,18 @@ const carregarTransacoesDoStorage = () => {
 // Mostra mensagem se não houver transações
 const mensagemSemTransacao = () => {
     const campoMensagem = document.querySelector(".mensagem-campo-transacao");
-    campoMensagem.textContent = listaDeTransacoes.length === 0 ? "Nenhuma transação no momento" : "";
+    campoMensagem.textContent =
+        listaDeTransacoes.length === 0 ? "Nenhuma transação no momento" : "";
 };
 
 // Insere visualmente a transação no DOM
 const renderizarTransacao = (transacao) => {
     const dataFormatada = formatarDataParaExibicao(transacao.data);
 
-    const icon = transacao.tipo === "entrada"
-        ? `<i class="fa-solid fa-circle-arrow-up arrow-up"></i>`
-        : `<i class="fa-solid fa-circle-arrow-down arrow-down"></i>`;
+    const icon =
+        transacao.tipo === "entrada"
+            ? `<i class="fa-solid fa-circle-arrow-up arrow-up"></i>`
+            : `<i class="fa-solid fa-circle-arrow-down arrow-down"></i>`;
 
     containerTransacao.innerHTML += `
     <div class="transacao" data-valor="${transacao.valor}" data-tipo="${transacao.tipo}">
