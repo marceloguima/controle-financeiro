@@ -163,9 +163,10 @@ const mostraResumo = () => {
 // Atualiza os cards de resumo
 const atualizaResumo = () => {
     const saldoAtual = totalReceitas - totaldespesas;
-    cardReceitas.textContent = `R$ ${totalReceitas.toFixed(2)}`;
-    cardSaidas.textContent = `R$ ${totaldespesas.toFixed(2)}`;
-    cardSaldo.textContent = `R$ ${saldoAtual.toFixed(2)}`;
+
+    cardReceitas.textContent = totalReceitas.toLocaleString("pt-br",{style: "currency", currency: "BRL"});
+    cardSaidas.textContent = totaldespesas.toLocaleString("pt-br", {style: "currency", currency: "BRL"});
+    cardSaldo.textContent = saldoAtual.toLocaleString("pt-br", {style: "currency", currency: "BRL"});
 };
 
 // Referências de elementos do formulário
@@ -311,7 +312,7 @@ const renderizarTransacao = (transacao) => {
         </div>
         <p class="forma-transacao">${transacao.forma}</p>
         <p class="data-transacao">${dataFormatada}</p>
-        <p class="valor-transacao"> R$ ${transacao.valor}</p>
+        <p class="valor-transacao">${transacao.valor.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</p>
         <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
         <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
 
