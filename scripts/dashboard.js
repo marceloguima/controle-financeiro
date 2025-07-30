@@ -53,7 +53,7 @@ function filtraPorData() {
             <label>Selecione a data da transação</label>
             <input type="date" />
         </div>
-        <button class="botao-azul filter">Buscar</button> 
+        <button class="botao-azul filter" onclick=" mostraTransacoesFiltradas();">Buscar</button> 
     </div>
     <button onclick="fechaCampoFiltro()" class="btn-opcoes fechar">Fechar</button>`;
     fechaMenu();
@@ -100,9 +100,29 @@ const abreCampoFilter = () => {
 // Fecha área de filtro
 const fechaCampoFiltro = () => {
     containerParaFiltrar.classList.remove("show");
+};
+
+
+const transacoesFiltradas = document.querySelector(".filtradas");
+// aplica um overlay, aplica uma classe para mostrar
+//  o campo, desativa o botão de ver transações e chama a função para fechar o campo de filtro
+const mostraTransacoesFiltradas = () => {
+    overlay.classList.add("active");
+    transacoesFiltradas.classList.add("active");
+    btnVerTransacoes.disabled = true;
+    fechaCampoFiltro();
+};
+
+const btnFecharTransacoesFiltradas = document.querySelector(
+    ".btn-fecha-transacao"
+);
+
+// tira o overlay, remove a classe para sumir as transções e reativa o botão ver transações
+btnFecharTransacoesFiltradas.addEventListener("click", () => {
+    transacoesFiltradas.classList.remove("active");
     overlay.classList.remove("active");
     btnVerTransacoes.disabled = false;
-};
+});
 
 // Limpa campo de valor
 const limpaCampo = () => {
@@ -293,7 +313,7 @@ const renderizarTransacao = (transacao) => {
         <p class="data-transacao">${dataFormatada}</p>
         <p class="valor-transacao"> R$ ${transacao.valor}</p>
         <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
-                <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
+        <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
 
     </div>`;
 };
