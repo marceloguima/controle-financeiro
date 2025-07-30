@@ -479,10 +479,14 @@ select {
     position: absolute;
     top: 60px;
     left: -700px;
+    transform: rotate(-180deg);
+    transition: ease-in-out .5s;
 }
 
 .transacoes.filtradas.active {
     left: 0;
+    transform: rotate(0deg);
+   
 }
 
 .transacao-filtrada {

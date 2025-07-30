@@ -1,6 +1,8 @@
 @import url('dashboard.css'); 
 
 body{
+    display: flex;
+    /* flex-direction: column; */
     width: 100vw;
     background: var(--cinza-claro);
 }
@@ -8,8 +10,8 @@ body{
 
 img{
     width: 80%;
-    display: block;
-    margin: 0 auto;
+ 
+   
 }
 
 h1{
@@ -30,14 +32,58 @@ a{
     color: var(--branco-puro);
     background: var(--azul-principal);
     font-size: 3rem;
-    padding: 40px 360px;
-    border-radius: 20px;
+    /* padding: 40px 360px; */
+    border-radius: 10px;
     display: block;
     margin: auto;
     text-align: center;
+    box-shadow: 1px 2px 8px var(--preto-texto);
    
 }
  
+
+@media(min-width: 460px){
+
+    body{
+       
+        display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 80px;
+    }
+
+.main{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    img{
+        width: 500px;
+       
+        bottom: 0;
+    }
+
+h1{
+    font-size: 3rem;
+  
+}
+
+p{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+    a{
+        width: 300px;
+        font-size: 1.2rem;
+        padding: 10px;
+
+
+    }
+}
 
 
 
