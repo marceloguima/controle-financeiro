@@ -32,6 +32,7 @@ body {
 .container {
     height: 100%;
     width: 100%;
+    position: relative;
 }
 
 /* inicio header -----------------------------------------*/
@@ -203,19 +204,22 @@ button a {
 }
 
 .overlay-dropdown {
-    display: none;
     position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background-color: #000000;
     opacity: 0.7;
     z-index: 10;
+    left: -2000px;
+    transition: ease-in .3s;
+    
 }
 
 .overlay-dropdown.active {
-    display: block;
+    display: flex;
+    top: 80px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+
 }
 /*------------------------------- fim dropdown-------------------------------------- */
 
