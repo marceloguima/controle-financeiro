@@ -78,18 +78,7 @@
                     </ul>
 
                     <div class="drop-menu-campo-filter">
-                        <!-- <div id="container-campo-filter"> 
-                         <div class="campo-label">
-                                <label for="campo-filter">Categoria</label>
-                        <select name="" id="categoria">
-                            <option value="salario">Meu Salário</option>
-                            <option value="freelancer">Freelancer</option>
-                            <option value="renda-extra">Renda Extra</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                            </div>
-                            <button class="botao-azul filter">Buscar</button>
-                        </div> -->
+                        <!-- ********************Campos vindo do js********************** -->
                     </div>
                 </nav>
             </header>
@@ -213,7 +202,7 @@
 
                         <div class="campo">
                             <label for="data">Data</label>
-                            <input type="date" id="data" />
+                            <input type="date" id="data"/>
                         </div>
                     </div>
 
@@ -228,124 +217,17 @@
             </main>
 
             <section class="transacoes filtradas">
-                <button class="btn-fecha-transacao">
+                <button class="btn-fecha-transacao" onclick="FecharTransacoesFiltradas()">
                     <i class="fa-solid fa-chevron-left"></i> Fechar
                 </button>
-                <div class="transacao-filtrada">
-                    <div class="div-icon-categoria filtrada">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            fill="currentColor"
-                            class="bi bi-arrow-up-circle-fill arrow-up"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-                            />
-                        </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <div class="forma-valor">
-                        <p class="tipo-transacao-filtrada">Pix</p>
-                        <p class="valor-transacao-filtrada">R$ 1.111,00</p>
-                    </div>
-                    <div class="dia-transacao">
-                        <p>Dia</p>
-                        <p class="data-transacao-filtrada">26/07/2025</p>
-                    </div>
-                </div>
-                <div class="transacao-filtrada">
-                    <div class="div-icon-categoria">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            fill="currentColor"
-                            class="bi bi-arrow-up-circle-fill arrow-up"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-                            />
-                        </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <p class="tipo-transacao-filtrada">Pix</p>
-                    <p class="data-transacao-filtrada">26/07/2025</p>
-                    <p class="valor-transacao-filtrada">R$ 1.111,00</p>
-                </div>
-                <div class="transacao-filtrada">
-                    <div class="div-icon-categoria">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            fill="currentColor"
-                            class="bi bi-arrow-up-circle-fill arrow-up"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-                            />
-                        </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <p class="tipo-transacao-filtrada">Pix</p>
-                    <p class="data-transacao-filtrada">26/07/2025</p>
-                    <p class="valor-transacao-filtrada">R$ 1.111,00</p>
-                </div>
-                <div class="transacao-filtrada">
-                    <div class="div-icon-categoria">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            fill="currentColor"
-                            class="bi bi-arrow-up-circle-fill arrow-up"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-                            />
-                        </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <p class="tipo-transacao-filtrada">Pix</p>
-                    <p class="data-transacao-filtrada">26/07/2025</p>
-                    <p class="valor-transacao-filtrada">R$ 1.111,00</p>
-                </div>
-                <div class="transacao-filtrada">
-                    <div class="div-icon-categoria">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            fill="currentColor"
-                            class="bi bi-arrow-up-circle-fill arrow-up"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
-                            />
-                        </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <p class="tipo-transacao-filtrada">Pix</p>
-                    <p class="data-transacao-filtrada">26/07/2025</p>
-                    <p class="valor-transacao-filtrada">R$ 1.111,00</p>
-                </div>
-            </section>
-
-            <section class="transacoes" id="transacoes">
-                <h3>Minhas transações</h3>
+                <p class="msg-sem-transacao"></p>
                 <div class="linha"></div>
-                <p class="mensagem-campo-transacao"></p>
-                <div class="container-transacao">
-                    <!-- <div class="transacao">
-                    <div class="div-icon-categoria">
-                         <svg
+
+                <ul
+                    class="lista">
+                    <!-- <li class="transacao-filtrada">
+                        <div class="div-icon-categoria filtrada">
+                            <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="20"
                                 height="20"
@@ -357,13 +239,28 @@
                                     d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
                                 />
                             </svg>
-                        <h4>Salário</h4>
-                    </div>
-                    <p class="tipo-transacao">Pix</p>
-                    <p class="data-transacao">26/07/2025</p>
-                    <p class="valor-transacao"> R$ 1.111,00</p>
-                    <button>Excluir</button>
-                </div>-->
+                            <h4>Salário</h4>
+                        </div>
+                        <div class="forma-valor">
+                            <p class="tipo-transacao-filtrada">Pix</p>
+                            <p class="valor-transacao-filtrada">R$ 1.111,00</p>
+                        </div>
+                        <div class="dia-transacao">
+                            <p>Dia</p>
+                            <p class="data-transacao-filtrada">26/07/2025</p>
+                        </div>
+                    </li> -->
+
+                    
+                </ul>
+            </section>
+
+            <section class="transacoes" id="transacoes">
+                <h3>Minhas transações</h3>
+                <div class="linha"></div>
+                <p class="mensagem-campo-transacao"></p>
+                <div class="container-transacao">
+                    <!-- *************Transação criada no js************* -->
                 </div>
             </section>
         </div>

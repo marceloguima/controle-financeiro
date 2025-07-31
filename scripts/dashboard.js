@@ -3,14 +3,13 @@ const cardReceitas = document.getElementById("total-entradas");
 const cardSaidas = document.getElementById("total-despesas");
 const cardSaldo = document.getElementById("saldo");
 
+let listaDeTransacoes = [];
+
 // Input de valor da transação
 const valorInserido = document.getElementById("valor");
 
 // Referência ao formulário de cadastro
 const formulario = document.querySelector("form");
-
-// Lista de transações (base para renderizar e salvar)
-let listaDeTransacoes = [];
 
 // Evento de envio do formulário
 formulario.addEventListener("submit", (evento) => {
@@ -41,26 +40,26 @@ const fechaMenu = () => {
     overlay.classList.remove("active");
 };
 
-// Filtro por data
-btnFiltraData.addEventListener("click", () => {
-    filtraPorData();
-});
-
 function filtraPorData() {
     containerParaFiltrar.innerHTML = `
     <div id="container-campo-filter">
         <div class="campo-label">
-            <label>Selecione a data da transação</label>
-            <input type="date" />
+            <label id="label-personalizada">Selecione a data da transação</label>
+            <input type="date" id="dataAFiltrar"/>
         </div>
-        <button class="botao-azul filter" onclick=" mostraTransacoesFiltradas();">Buscar</button> 
+        <button class="botao-azul filter"  onclick="mostraTransacoesFiltradas()";">Buscar</button> 
     </div>
     <button onclick="fechaCampoFiltro()" class="btn-opcoes fechar">Fechar</button>`;
     fechaMenu();
     abreCampoFilter();
 }
 
-// Filtro por categoria
+// Filtro por data escutando o botão
+btnFiltraData.addEventListener("click", () => {
+    filtraPorData();
+});
+
+// Filtro por categoria escutando o botão
 btnFiltraCategoria.addEventListener("click", () => {
     filtraPorCategoria();
 });
@@ -86,7 +85,7 @@ const filtraPorCategoria = () => {
         <button class="botao-azul filter">Buscar</button>
     </div>
     <button onclick="fechaCampoFiltro()" class="btn-opcoes fechar">Fechar</button>`;
-    fechaMenu();
+    // fechaMenu();
     abreCampoFilter();
 };
 
@@ -102,27 +101,97 @@ const fechaCampoFiltro = () => {
     containerParaFiltrar.classList.remove("show");
 };
 
-
 const transacoesFiltradas = document.querySelector(".filtradas");
 // aplica um overlay, aplica uma classe para mostrar
 //  o campo, desativa o botão de ver transações e chama a função para fechar o campo de filtro
-const mostraTransacoesFiltradas = () => {
+const mostraTransacoesFiltradas = ()=>{
+    const dataParaFiltrar = document.getElementById("dataAFiltrar");
+    const dataSelecionada = dataParaFiltrar.value;
+
+    // aqui acesso a label para aplicar cor vermelha caso o usuário não coloque a data
+const labelPersonalizada = document.getElementById("label-personalizada")
+    if (!dataSelecionada) {
+        labelPersonalizada.style.color = "red"
+        labelPersonalizada.style.fontSize = "1rem"
+        labelPersonalizada.style.fontWeight = "500"
+        setTimeout(()=>{
+             labelPersonalizada.style.color = ""
+        labelPersonalizada.style.fontSize = ""
+        labelPersonalizada.style.fontWeight = ""
+        },1500 )
+        return;
+    }
+
+    // filtrar
+    const resultados = listaDeTransacoes.filter(
+        (transacao) => transacao.data === dataSelecionada
+    );
+
     overlay.classList.add("active");
     transacoesFiltradas.classList.add("active");
     btnVerTransacoes.disabled = true;
+
+    console.log(resultados);
     fechaCampoFiltro();
+    exibeResuldadosFiltrados(resultados)
+}
+
+const exibeResuldadosFiltrados = (listaDeResultados) => {
+    const modalFiltradas = document.querySelector(".lista");
+    const msgSemTransacao = document.querySelector(".msg-sem-transacao");
+    // limpar para caso haja algo
+    modalFiltradas.innerHTML = "";
+
+    // se não tiver tiver transação pra data buscada em 4 segundos o modal fecha
+    if (listaDeResultados.length === 0) {
+        msgSemTransacao.textContent = "Nenhuma transação encontrada";
+        setTimeout(()=>{
+            FecharTransacoesFiltradas()
+        },4000)
+    } else {
+        
+        listaDeResultados.forEach((transacao) => {
+            const itemLi = ` <li class="transacao-filtrada">
+            <div class="div-icon-categoria filtrada">
+            <i class="fa-solid ${
+                transacao.tipo === "entrada"
+                ? "fa-circle-up arrow-up"
+                : "fa-circle-down arrow-down"
+            }"></i>
+            <h4>${transacao.categoria}</h4>
+            </div>
+            <div class="forma-valor">
+            <p class="tipo-transacao-filtrada">${
+                transacao.forma
+            }</p>
+            <p class="valor-transacao-filtrada">${transacao.valor.toLocaleString(
+                "pt-br",
+                { style: "currency", currency: "BRL" }
+            )}</p>
+            </div>
+            <div class="dia-transacao"> 
+            <p>Dia</p>
+            <p class="data-transacao-filtrada">${formatarDataParaExibicao(
+                transacao.data
+            )}</p>
+            </div>
+            </li>`;
+
+            msgSemTransacao.textContent = `Suas transações do dia ${formatarDataParaExibicao(transacao.data)}`;
+
+            modalFiltradas.innerHTML += itemLi;
+        });
+    }
+
+
 };
 
-const btnFecharTransacoesFiltradas = document.querySelector(
-    ".btn-fecha-transacao"
-);
-
 // tira o overlay, remove a classe para sumir as transções e reativa o botão ver transações
-btnFecharTransacoesFiltradas.addEventListener("click", () => {
+const FecharTransacoesFiltradas = () => {
     transacoesFiltradas.classList.remove("active");
     overlay.classList.remove("active");
     btnVerTransacoes.disabled = false;
-});
+};
 
 // Limpa campo de valor
 const limpaCampo = () => {
@@ -164,9 +233,18 @@ const mostraResumo = () => {
 const atualizaResumo = () => {
     const saldoAtual = totalReceitas - totaldespesas;
 
-    cardReceitas.textContent = totalReceitas.toLocaleString("pt-br",{style: "currency", currency: "BRL"});
-    cardSaidas.textContent = totaldespesas.toLocaleString("pt-br", {style: "currency", currency: "BRL"});
-    cardSaldo.textContent = saldoAtual.toLocaleString("pt-br", {style: "currency", currency: "BRL"});
+    cardReceitas.textContent = totalReceitas.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+    });
+    cardSaidas.textContent = totaldespesas.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+    });
+    cardSaldo.textContent = saldoAtual.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+    });
 };
 
 // Referências de elementos do formulário
@@ -305,14 +383,19 @@ const renderizarTransacao = (transacao) => {
             : `<i class="fa-solid fa-circle-arrow-down arrow-down"></i>`;
 
     containerTransacao.innerHTML += `
-    <div class="transacao" data-valor="${transacao.valor}" data-tipo="${transacao.tipo}">
+    <div class="transacao" data-valor="${transacao.valor}" data-tipo="${
+        transacao.tipo
+    }">
         <div class="div-icon-categoria">
             ${icon}
             <h4>${transacao.categoria}</h4>
         </div>
         <p class="forma-transacao">${transacao.forma}</p>
         <p class="data-transacao">${dataFormatada}</p>
-        <p class="valor-transacao">${transacao.valor.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</p>
+        <p class="valor-transacao">${transacao.valor.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+        })}</p>
         <button class="btn-excluir-transacao"><i class="fa-solid fa-trash"></i> Excluir</button>
         <button class="btn-excluir-transacao mobile"><i class="fa-solid fa-trash"></i></button>
 

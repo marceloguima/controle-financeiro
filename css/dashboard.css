@@ -11,10 +11,10 @@
     --verde-entrada: #28a745; /* Azul para cabeçalhos e elementos de destaque */
     --verde-sucesso: #50e3c2; /* Verde para indicar receitas e ações positivas */
     --laranja-alerta: #f5a623;
-    --vermelho-saida: #dc3545; /* Laranja para alertas e status pendentes */
-    --vermelho-despesa: #d0021b; /* Vermelho para indicar despesas e ações negativas */
+    --vermelho-botao: #f11329fd; /* Laranja para alertas e status pendentes */
+    --vermelho-despesa: #db2e42; /* Vermelho para indicar despesas e ações negativas */
     --cinza-texto: #4a4a4a;
-    --preto-texto: #222222;
+    --preto-texto: #2e2e2e;
     --cinza-texto-claro: #777; /* Cinza escuro para textos principais */
     --cinza-1: #f3f3f3;
     --cinza-2: #cac8c8;
@@ -325,6 +325,7 @@ form {
 
 .tipo-de-transacao h3 {
     margin-bottom: 10px;
+    color: var(--preto-texto);
 }
 
 .radios {
@@ -467,7 +468,7 @@ select {
 }
 
 .btn-excluir-transacao:hover {
-    background: var(--vermelho-despesa);
+    background: var(--vermelho-botao);
     color: var(--branco-puro);
 }
 
@@ -478,7 +479,7 @@ select {
 /* *********************************início transações filtradas ***************************** */
 
 .transacoes.filtradas {
-    max-width: 700px;
+    max-width: 500px;
     z-index: 13;
     position: absolute;
     top: 60px;
@@ -489,13 +490,17 @@ select {
 
 .transacoes.filtradas.active {
     left: 0;
-   
-   
+    
 }
 
+.lista{
+    width: 100%;
+    display: block;
+}
 
 .div-icon-categoria.filtrada{
     flex-direction: column;
+    width: 100px;
 }
 
 .transacao-filtrada {
@@ -504,13 +509,21 @@ select {
     width: 100%;
     height: 60px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 2px 3px 8px;
     background: var(--branco-puro);
+    margin-top: 20px;
+}
+
+.forma-valor{
+    width: 40%;
+   
 }
 
 .valor-transacao-filtrada {
+   
     font-weight: 600;
     font-size: 1rem;
 }
@@ -539,6 +552,8 @@ select {
     border: solid 2px var(--cinza-3);
    
 }
+
+
 
 /************************************ fim transações filtradas ***********************/
 
