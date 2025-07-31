@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+        <link rel="icon" type="image/png" href="../imagens/favicon-fin-app.png" />
+        
         <!-- fontes do google -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -202,7 +203,7 @@
 
                         <div class="campo">
                             <label for="data">Data</label>
-                            <input type="date" id="data"/>
+                            <input type="date" id="data" />
                         </div>
                     </div>
 
@@ -217,14 +218,16 @@
             </main>
 
             <section class="transacoes filtradas">
-                <button class="btn-fecha-transacao" onclick="FecharTransacoesFiltradas()">
+                <button
+                    class="btn-fecha-transacao"
+                    onclick="FecharTransacoesFiltradas()"
+                >
                     <i class="fa-solid fa-chevron-left"></i> Fechar
                 </button>
                 <p class="msg-sem-transacao"></p>
                 <div class="linha"></div>
 
-                <ul
-                    class="lista">
+                <ul class="lista">
                     <!-- <li class="transacao-filtrada">
                         <div class="div-icon-categoria filtrada">
                             <svg
@@ -250,8 +253,6 @@
                             <p class="data-transacao-filtrada">26/07/2025</p>
                         </div>
                     </li> -->
-
-                    
                 </ul>
             </section>
 

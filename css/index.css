@@ -1,103 +1,41 @@
 @import url('dashboard.css'); 
 
-body{
-    display: flex;
-    /* flex-direction: column; */
-    width: 100vw;
-    background: var(--cinza-claro);
-}
 
+body{
+width: 100vw;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0 !important;
+gap: 20px;
+}
 
 img{
-    width: 80%;
- 
-   
+    width: 300px;
 }
 
+
 h1{
-    font-size: 5rem;
-    color: var(--laranja-alerta);
     text-align: center;
+    color: var(--laranja-alerta);
 }
 
 p{
-    font-size: 3.5rem;
     text-align: center;
-    margin: 30px 0 100px 0;
-    
 }
+
 
 a{
-    text-decoration: none;
-    color: var(--branco-puro);
-    background: var(--azul-principal);
-    font-size: 3rem;
-    /* padding: 40px 360px; */
-    border-radius: 10px;
-    display: block;
-    margin: auto;
-    text-align: center;
-    box-shadow: 1px 2px 8px var(--preto-texto);
-   
-}
+   background: var(--azul-principal);
+   width: 310px;
+   height: 42px;
+   border-radius: 10px;
+   text-decoration: none;
+   color: var(--branco-puro);
+   font-size: 1.2rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
  
-
-@media(min-width: 460px){
-
-    body{
-       
-        display: flex;
-       justify-content: center;
-       align-items: center;
-       gap: 80px;
-    }
-
-.main{
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
-
-    img{
-        width: 500px;
-       
-        bottom: 0;
-    }
-
-h1{
-    font-size: 3rem;
-  
-}
-
-p{
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-    a{
-        width: 300px;
-        font-size: 1.2rem;
-        padding: 10px;
-
-
-    }
-}
-
-
-
-/*    --azul-principal: #4a90e2;
-    --azul-hover: #377ccc;
-    --verde-entrada: #28a745; 
-    --verde-sucesso: #50e3c2; 
-    --laranja-alerta: #f5a623;
-    --vermelho-saida: #dc3545; 
-    --vermelho-despesa: #d0021b; 
-    --cinza-texto: #4a4a4a;
-    --preto-texto: #222222;
-    --cinza-texto-claro: #777; 
-    --cinza-1: #f3f3f3;
-    --cinza-2: #cac8c8;
-    --cinza-3: #b3b3b3; 
-    --branco-puro: #ffffff; / */

@@ -432,3 +432,6 @@ document.addEventListener("click", (e) => {
 
 // Inicializa carregando as transações salvas
 carregarTransacoesDoStorage();
+
+
+// para dia 31/07/2025 se Deus permitir irei implementar o filtro por categoria, daí ja da pra postar no linkedin
