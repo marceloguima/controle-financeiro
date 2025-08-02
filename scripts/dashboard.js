@@ -253,15 +253,12 @@ const atualizaResumo = () => {
         percentualGasto = 0;
     }
 
- 
-    
- setTimeout(() => {
-    
-     if (percentualGasto > 100) {
-         mensagemAlerta.textContent =
-         "Poxa! Você está sem controle financeiro.";
-         mensagemAlerta.style.color = "#e23838ff";
-         mensagemAlerta.style.fontSize = "1.2rem";
+    setTimeout(() => {
+        if (percentualGasto > 100) {
+            mensagemAlerta.textContent =
+                "Poxa! Você está sem controle financeiro.";
+            mensagemAlerta.style.color = "#e23838ff";
+            mensagemAlerta.style.fontSize = "1.2rem";
         } else if (percentualGasto === 100) {
             mensagemAlerta.textContent = "Ops! Você está sem saldo.";
             mensagemAlerta.style.color = "#ff0000ff";
@@ -280,28 +277,21 @@ const atualizaResumo = () => {
                 0
             )}%`;
             mensagemAlerta.style.color = "#f38c06ff";
-        } else if (percentualGasto > 0) {
-            mensagemAlerta.textContent = `Parabéns! Seus gastos ainda estão em ${percentualGasto.toFixed(
+        } else if (percentualGasto >= 1) {
+            mensagemAlerta.textContent = `Seus gastos ainda estão em ${percentualGasto.toFixed(
                 0
             )}%`;
-            mensagemAlerta.style.color = "#4e922eff";
-        } else 
-            if(totalReceitas > 0 && totaldespesas === 0){
+            mensagemAlerta.style.color = "#4a90e2";
+        }
+      
+       else if (totalReceitas > 0 && totaldespesas === 0) {
             mensagemAlerta.textContent = "Nenhum gasto até o momento.";
             mensagemAlerta.style.color = "#4e922eff";
-            }
-        
-    },2000);
-      
-        mensagemAlerta.textContent = "Monitorando...";
-        mensagemAlerta.style.color = "#888888ff";
-        
-  
-        
-    
-           
-        
-    
+        }
+    }, 2000);
+
+    mensagemAlerta.textContent = "Monitorando...";
+    mensagemAlerta.style.color = "#888888ff";
 };
 
 // Referências de elementos do formulário
