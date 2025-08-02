@@ -285,16 +285,18 @@ const atualizaResumo = () => {
                 0
             )}%`;
             mensagemAlerta.style.color = "#4e922eff";
-        } else {
+        } else 
+            if(totalReceitas > 0 && totaldespesas === 0){
             mensagemAlerta.textContent = "Nenhum gasto até o momento.";
-            mensagemAlerta.style.color = "#4a90e2";
-        }
+            mensagemAlerta.style.color = "#4e922eff";
+            }
         
     },2000);
-       
-            mensagemAlerta.textContent = "Monitorando...";
-            mensagemAlerta.style.color = "#888888ff";
-            
+      
+        mensagemAlerta.textContent = "Monitorando...";
+        mensagemAlerta.style.color = "#888888ff";
+        
+  
         
     
            
