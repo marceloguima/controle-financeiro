@@ -104,21 +104,21 @@ const fechaCampoFiltro = () => {
 const transacoesFiltradas = document.querySelector(".filtradas");
 // aplica um overlay, aplica uma classe para mostrar
 //  o campo, desativa o botão de ver transações e chama a função para fechar o campo de filtro
-const mostraTransacoesFiltradas = ()=>{
+const mostraTransacoesFiltradas = () => {
     const dataParaFiltrar = document.getElementById("dataAFiltrar");
     const dataSelecionada = dataParaFiltrar.value;
 
     // aqui acesso a label para aplicar cor vermelha caso o usuário não coloque a data
-const labelPersonalizada = document.getElementById("label-personalizada")
+    const labelPersonalizada = document.getElementById("label-personalizada");
     if (!dataSelecionada) {
-        labelPersonalizada.style.color = "red"
-        labelPersonalizada.style.fontSize = "1rem"
-        labelPersonalizada.style.fontWeight = "500"
-        setTimeout(()=>{
-             labelPersonalizada.style.color = ""
-        labelPersonalizada.style.fontSize = ""
-        labelPersonalizada.style.fontWeight = ""
-        },1500 )
+        labelPersonalizada.style.color = "red";
+        labelPersonalizada.style.fontSize = "1rem";
+        labelPersonalizada.style.fontWeight = "500";
+        setTimeout(() => {
+            labelPersonalizada.style.color = "";
+            labelPersonalizada.style.fontSize = "";
+            labelPersonalizada.style.fontWeight = "";
+        }, 1500);
         return;
     }
 
@@ -133,8 +133,8 @@ const labelPersonalizada = document.getElementById("label-personalizada")
 
     console.log(resultados);
     fechaCampoFiltro();
-    exibeResuldadosFiltrados(resultados)
-}
+    exibeResuldadosFiltrados(resultados);
+};
 
 const exibeResuldadosFiltrados = (listaDeResultados) => {
     const modalFiltradas = document.querySelector(".lista");
@@ -145,25 +145,22 @@ const exibeResuldadosFiltrados = (listaDeResultados) => {
     // se não tiver tiver transação pra data buscada em 4 segundos o modal fecha
     if (listaDeResultados.length === 0) {
         msgSemTransacao.textContent = "Nenhuma transação encontrada";
-        setTimeout(()=>{
-            FecharTransacoesFiltradas()
-        },4000)
+        setTimeout(() => {
+            FecharTransacoesFiltradas();
+        }, 4000);
     } else {
-        
         listaDeResultados.forEach((transacao) => {
             const itemLi = ` <li class="transacao-filtrada">
             <div class="div-icon-categoria filtrada">
             <i class="fa-solid ${
                 transacao.tipo === "entrada"
-                ? "fa-circle-up arrow-up"
-                : "fa-circle-down arrow-down"
+                    ? "fa-circle-up arrow-up"
+                    : "fa-circle-down arrow-down"
             }"></i>
             <h4>${transacao.categoria}</h4>
             </div>
             <div class="forma-valor">
-            <p class="tipo-transacao-filtrada">${
-                transacao.forma
-            }</p>
+            <p class="tipo-transacao-filtrada">${transacao.forma}</p>
             <p class="valor-transacao-filtrada">${transacao.valor.toLocaleString(
                 "pt-br",
                 { style: "currency", currency: "BRL" }
@@ -177,13 +174,13 @@ const exibeResuldadosFiltrados = (listaDeResultados) => {
             </div>
             </li>`;
 
-            msgSemTransacao.textContent = `Suas transações do dia ${formatarDataParaExibicao(transacao.data)}`;
+            msgSemTransacao.textContent = `Suas transações do dia ${formatarDataParaExibicao(
+                transacao.data
+            )}`;
 
             modalFiltradas.innerHTML += itemLi;
         });
     }
-
-
 };
 
 // tira o overlay, remove a classe para sumir as transções e reativa o botão ver transações
@@ -201,6 +198,7 @@ const limpaCampo = () => {
 // Totais acumulados
 let totalReceitas = 0;
 let totaldespesas = 0;
+let percentualGasto = 0;
 
 // Processa transação ao submeter
 const mostraResumo = () => {
@@ -245,6 +243,53 @@ const atualizaResumo = () => {
         style: "currency",
         currency: "BRL",
     });
+
+    const containerMensagem = document.querySelector(".container-mensagem")
+    const mensagemAlerta = document.querySelector(".msg-alerta");
+
+    if (totalReceitas > 0) {
+        percentualGasto = (totaldespesas / totalReceitas) * 100;
+    } else {
+        percentualGasto = 0;
+    }
+
+    if (percentualGasto > 100) {
+        mensagemAlerta.textContent = "Poxa! Você está sem controle financeiro.";
+        mensagemAlerta.style.color = "#e23838ff";
+        mensagemAlerta.style.fontSize = "1.2rem"
+    
+
+        
+
+    } else if (percentualGasto === 100) {
+        mensagemAlerta.textContent = "Ops! Você está sem saldo.";
+                mensagemAlerta.style.color = "#ff0000ff";
+
+    } else if (percentualGasto >= 90) {
+        mensagemAlerta.style.color = "#f12626ff";
+        mensagemAlerta.textContent = `PERIGO! Seus gastos estão em ${percentualGasto.toFixed(
+            0
+        )}%`;
+    } else if (percentualGasto >= 70) {
+        mensagemAlerta.style.color = "#ff4800ff";
+        mensagemAlerta.textContent = `CUIDADO! Seus gastos estão em ${percentualGasto.toFixed(
+            0
+        )}%`;
+    } else if (percentualGasto >= 50) {
+        mensagemAlerta.textContent =`Seus gastos estão em ${percentualGasto.toFixed(0)}%`;
+                mensagemAlerta.style.color = "#f38c06ff";
+
+    } else {
+        mensagemAlerta.textContent = `Parabéns! Seus gastos ainda estão em ${percentualGasto.toFixed(
+            0
+        )}%`;
+        mensagemAlerta.style.color = "#4e922eff";
+    }
+
+    setTimeout(() => {
+        mensagemAlerta.textContent = "Monitorando..."
+                mensagemAlerta.style.color = "#888888ff";
+    }, 5000);
 };
 
 // Referências de elementos do formulário
@@ -328,6 +373,7 @@ const criaTransacao = () => {
     ).value;
 
     const novaTransacao = {
+        id: new Date().getTime(),
         valor: valorDigitado,
         forma: formaSelecionda,
         data: diaDaTransacao,
@@ -383,9 +429,7 @@ const renderizarTransacao = (transacao) => {
             : `<i class="fa-solid fa-circle-arrow-down arrow-down"></i>`;
 
     containerTransacao.innerHTML += `
-    <div class="transacao" data-valor="${transacao.valor}" data-tipo="${
-        transacao.tipo
-    }">
+    <div class="transacao" data-id="${transacao.id}">
         <div class="div-icon-categoria">
             ${icon}
             <h4>${transacao.categoria}</h4>
@@ -409,19 +453,26 @@ document.addEventListener("click", (e) => {
     if (elementoClicado) {
         const transacaoParaApagar = elementoClicado.closest(".transacao");
 
-        const valor = parseFloat(transacaoParaApagar.dataset.valor);
-        const tipo = transacaoParaApagar.dataset.tipo;
+        const idParaApagar = Number(transacaoParaApagar.dataset.id);
+
+        // Encontra a transação exata na lista para saber o valor e tipo
+        const transacaoExcluida = listaDeTransacoes.find(
+            (t) => t.id === idParaApagar
+        );
+
+        if (!transacaoExcluida) return;
 
         listaDeTransacoes = listaDeTransacoes.filter(
-            (t) => !(t.valor === valor && t.tipo === tipo)
+            (t) => t.id !== idParaApagar
         );
 
         salvarTransacaoNoStorage();
 
-        if (tipo === "entrada") {
-            totalReceitas -= valor;
+        // Subtrai dos totais
+        if (transacaoExcluida.tipo === "entrada") {
+            totalReceitas -= transacaoExcluida.valor;
         } else {
-            totaldespesas -= valor;
+            totaldespesas -= transacaoExcluida.valor;
         }
 
         atualizaResumo();
@@ -432,6 +483,5 @@ document.addEventListener("click", (e) => {
 
 // Inicializa carregando as transações salvas
 carregarTransacoesDoStorage();
-
 
 // para dia 31/07/2025 se Deus permitir irei implementar o filtro por categoria, daí ja da pra postar no linkedin

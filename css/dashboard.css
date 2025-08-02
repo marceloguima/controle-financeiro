@@ -123,8 +123,6 @@ li {
     z-index: 12;
 }
 
-
-
 /* adicionando essas classe com js para o dropdown ficar visível */
 .show {
     display: flex;
@@ -211,8 +209,7 @@ button a {
     opacity: 0.7;
     z-index: 10;
     left: -2000px;
-    transition: ease-in .3s;
-    
+    transition: ease-in 0.3s;
 }
 
 .overlay-dropdown.active {
@@ -221,7 +218,6 @@ button a {
     left: -5px;
     width: 100%;
     height: 100%;
-
 }
 /*------------------------------- fim dropdown-------------------------------------- */
 
@@ -236,15 +232,37 @@ main {
 /* -------------------------------início seção resumo ---------------------------------*/
 .cards-resumo {
     width: 100%;
-    height: 150px;
+    height: 200px;
     margin-top: 100px;
+    padding-top: 10px;
     border-radius: 10px;
     border: solid 1px var(--cinza-2);
     box-shadow: 1px 2px 3px var(--cinza-2);
     background-color: var(--cinza-1);
     display: flex;
     justify-content: space-around;
+    position: relative;
+}
+
+.container-mensagem {
+    position: absolute;
+    bottom: 10px;
+    width: 25%;
+    height: 50px;
+    background: var(--branco-puro);
+    border: solid 2px var(--cinza-3);
+    border-radius: 5px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    box-shadow: 1px 2px 3px var(--cinza-3);
+}
+
+.msg-alerta {
+    overflow-wrap: break-word;
+    text-align: center;
+    font-weight: 600;
+    color: var(--cinza-3);
 }
 
 .card {
@@ -254,7 +272,7 @@ main {
     justify-content: center;
     border: solid 1px var(--cinza-2);
     background: var(--branco-puro);
-    height: 60%;
+    height: 50%;
     width: 25%;
     min-width: 200px;
     border-radius: 10px;
@@ -281,10 +299,8 @@ main {
     color: var(--verde-entrada);
 }
 
-
 .arrow-down {
     color: var(--vermelho-despesa);
-    
 }
 
 .icon-carteira {
@@ -445,15 +461,15 @@ select {
 
 .div-icon-categoria {
     display: flex;
-   width: 120px;
+    width: 120px;
     gap: 5px;
 }
 
-.forma-transacao{
+.forma-transacao {
     width: 64px;
 }
 
-.data-transacao{
+.data-transacao {
     width: 90px;
 }
 
@@ -493,21 +509,20 @@ select {
     position: absolute;
     top: 60px;
     left: -750px;
-    transition: ease-in-out .5s;
-    padding: 70px  10px;
+    transition: ease-in-out 0.5s;
+    padding: 70px 10px;
 }
 
 .transacoes.filtradas.active {
     left: 0;
-    
 }
 
-.lista{
+.lista {
     width: 100%;
     display: block;
 }
 
-.div-icon-categoria.filtrada{
+.div-icon-categoria.filtrada {
     flex-direction: column;
     width: 100px;
 }
@@ -526,13 +541,11 @@ select {
     margin-top: 20px;
 }
 
-.forma-valor{
+.forma-valor {
     width: 40%;
-   
 }
 
 .valor-transacao-filtrada {
-   
     font-weight: 600;
     font-size: 1rem;
 }
@@ -552,17 +565,12 @@ select {
     position: absolute;
     top: 10px;
     left: 10px;
-  
-   
 }
 
 .btn-fecha-transacao:hover {
-   background: #0000000a;
+    background: #0000000a;
     border: solid 2px var(--cinza-3);
-   
 }
-
-
 
 /************************************ fim transações filtradas ***********************/
 
@@ -675,8 +683,13 @@ select {
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
         padding: 20px 0;
-        height: auto;
+        height: 280px;
         row-gap: 15px;
+    }
+
+    .msg-alerta {
+        grid-column: 1 / -1;
+        justify-self: center;
     }
 
     .receita {
@@ -736,22 +749,26 @@ select {
         padding: 5px;
     }
 
-   .div-icon-categoria, .valor-transacao, .forma-transacao, .data-transacao{
-    font-size: .9rem;
-   }
-   
-   .transacao{
-    position: relative;
-   }
-.btn-excluir-transacao{
-    font-size: .8rem;
-    position: absolute;
-    right: -15px;
-    .campo {
-        width: 100%;
+    .div-icon-categoria,
+    .valor-transacao,
+    .forma-transacao,
+    .data-transacao {
+        font-size: 0.9rem;
     }
 
-    #data {
-        width: 100%;
+    .transacao {
+        position: relative;
+    }
+    .btn-excluir-transacao {
+        font-size: 0.8rem;
+        position: absolute;
+        right: -15px;
+        .campo {
+            width: 100%;
+        }
+
+        #data {
+            width: 100%;
+        }
     }
 }
