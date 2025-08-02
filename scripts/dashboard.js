@@ -259,9 +259,16 @@ const atualizaResumo = () => {
                 "Poxa! Você está sem controle financeiro.";
             mensagemAlerta.style.color = "#e23838ff";
             mensagemAlerta.style.fontSize = "1.2rem";
-        } else if (saldoAtual === 0) {
+
+        }else if(saldoAtual === 0 && totalReceitas === 0 &&totaldespesas === 0 ){
+              mensagemAlerta.textContent = "Insira algum valor para começar.";
+            mensagemAlerta.style.color = "#3d3d3dff";
+        }
+         else if (saldoAtual === 0) {
             mensagemAlerta.textContent = "Ops! Você está sem saldo.";
             mensagemAlerta.style.color = "#ff0000ff";
+
+
         } else if (percentualGasto >= 90) {
             mensagemAlerta.style.color = "#f12626ff";
             mensagemAlerta.textContent = `PERIGO! Seus gastos estão em ${percentualGasto.toFixed(
