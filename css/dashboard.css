@@ -281,12 +281,13 @@ main {
     color: var(--verde-entrada);
 }
 
-.title-card,
+
 .arrow-down {
     color: var(--vermelho-despesa);
+    
 }
 
-.calculator {
+.icon-carteira {
     color: var(--azul-principal);
 }
 
