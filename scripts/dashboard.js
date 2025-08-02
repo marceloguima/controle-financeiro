@@ -244,7 +244,7 @@ const atualizaResumo = () => {
         currency: "BRL",
     });
 
-    const containerMensagem = document.querySelector(".container-mensagem")
+    const containerMensagem = document.querySelector(".container-mensagem");
     const mensagemAlerta = document.querySelector(".msg-alerta");
 
     if (totalReceitas > 0) {
@@ -253,48 +253,53 @@ const atualizaResumo = () => {
         percentualGasto = 0;
     }
 
-    setInterval(() => {
-        
-  
-
-    if (percentualGasto > 100) {
-        mensagemAlerta.textContent = "Poxa! Você está sem controle financeiro.";
-        mensagemAlerta.style.color = "#e23838ff";
-        mensagemAlerta.style.fontSize = "1.2rem"
+ 
     
-
+ setTimeout(() => {
+    
+     if (percentualGasto > 100) {
+         mensagemAlerta.textContent =
+         "Poxa! Você está sem controle financeiro.";
+         mensagemAlerta.style.color = "#e23838ff";
+         mensagemAlerta.style.fontSize = "1.2rem";
+        } else if (percentualGasto === 100) {
+            mensagemAlerta.textContent = "Ops! Você está sem saldo.";
+            mensagemAlerta.style.color = "#ff0000ff";
+        } else if (percentualGasto >= 90) {
+            mensagemAlerta.style.color = "#f12626ff";
+            mensagemAlerta.textContent = `PERIGO! Seus gastos estão em ${percentualGasto.toFixed(
+                0
+            )}%`;
+        } else if (percentualGasto >= 70) {
+            mensagemAlerta.style.color = "#ff4800ff";
+            mensagemAlerta.textContent = `CUIDADO! Seus gastos estão em ${percentualGasto.toFixed(
+                0
+            )}%`;
+        } else if (percentualGasto >= 50) {
+            mensagemAlerta.textContent = `Seus gastos estão em ${percentualGasto.toFixed(
+                0
+            )}%`;
+            mensagemAlerta.style.color = "#f38c06ff";
+        } else if (percentualGasto > 0) {
+            mensagemAlerta.textContent = `Parabéns! Seus gastos ainda estão em ${percentualGasto.toFixed(
+                0
+            )}%`;
+            mensagemAlerta.style.color = "#4e922eff";
+        } else {
+            mensagemAlerta.textContent = "Nenhum gasto até o momento.";
+            mensagemAlerta.style.color = "#4a90e2";
+        }
         
-
-    } else if (percentualGasto === 100) {
-        mensagemAlerta.textContent = "Ops! Você está sem saldo.";
-                mensagemAlerta.style.color = "#ff0000ff";
-
-    } else if (percentualGasto >= 90) {
-        mensagemAlerta.style.color = "#f12626ff";
-        mensagemAlerta.textContent = `PERIGO! Seus gastos estão em ${percentualGasto.toFixed(
-            0
-        )}%`;
-    } else if (percentualGasto >= 70) {
-        mensagemAlerta.style.color = "#ff4800ff";
-        mensagemAlerta.textContent = `CUIDADO! Seus gastos estão em ${percentualGasto.toFixed(
-            0
-        )}%`;
-    } else if (percentualGasto >= 50) {
-        mensagemAlerta.textContent =`Seus gastos estão em ${percentualGasto.toFixed(0)}%`;
-                mensagemAlerta.style.color = "#f38c06ff";
-
-    } else {
-        mensagemAlerta.textContent = `Parabéns! Seus gastos ainda estão em ${percentualGasto.toFixed(
-            0
-        )}%`;
-        mensagemAlerta.style.color = "#4e922eff";
-    }
-  
-    setTimeout(() => {
-        mensagemAlerta.textContent = "Monitorando..."
-                mensagemAlerta.style.color = "#888888ff";
-    }, 5000);
-    }, 8000);
+    },2000);
+       
+            mensagemAlerta.textContent = "Monitorando...";
+            mensagemAlerta.style.color = "#888888ff";
+            
+        
+    
+           
+        
+    
 };
 
 // Referências de elementos do formulário
