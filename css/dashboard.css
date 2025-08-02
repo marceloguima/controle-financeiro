@@ -123,6 +123,8 @@ li {
     z-index: 12;
 }
 
+
+
 /* adicionando essas classe com js para o dropdown ficar visível */
 .show {
     display: flex;
@@ -216,7 +218,7 @@ button a {
 .overlay-dropdown.active {
     display: flex;
     top: 80px;
-    left: -10px;
+    left: -5px;
     width: 100%;
     height: 100%;
 
@@ -442,17 +444,22 @@ select {
 
 .div-icon-categoria {
     display: flex;
-    width: auto;
+   width: 120px;
     gap: 5px;
 }
 
-.transacao p {
-    width: auto;
+.forma-transacao{
+    width: 64px;
+}
+
+.data-transacao{
+    width: 90px;
 }
 
 .valor-transacao {
     font-size: 1.1rem;
     font-weight: 600;
+    width: 120px;
 }
 
 .btn-excluir-transacao {
@@ -473,6 +480,7 @@ select {
 }
 
 .btn-excluir-transacao.mobile {
+    background: transparent;
     display: none;
 }
 
@@ -727,6 +735,17 @@ select {
         padding: 5px;
     }
 
+   .div-icon-categoria, .valor-transacao, .forma-transacao, .data-transacao{
+    font-size: .9rem;
+   }
+   
+   .transacao{
+    position: relative;
+   }
+.btn-excluir-transacao{
+    font-size: .8rem;
+    position: absolute;
+    right: -15px;
     .campo {
         width: 100%;
     }
