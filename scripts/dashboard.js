@@ -253,6 +253,10 @@ const atualizaResumo = () => {
         percentualGasto = 0;
     }
 
+    setInterval(() => {
+        
+  
+
     if (percentualGasto > 100) {
         mensagemAlerta.textContent = "Poxa! Você está sem controle financeiro.";
         mensagemAlerta.style.color = "#e23838ff";
@@ -285,11 +289,12 @@ const atualizaResumo = () => {
         )}%`;
         mensagemAlerta.style.color = "#4e922eff";
     }
-
+  
     setTimeout(() => {
         mensagemAlerta.textContent = "Monitorando..."
                 mensagemAlerta.style.color = "#888888ff";
     }, 5000);
+    }, 8000);
 };
 
 // Referências de elementos do formulário
