@@ -71,7 +71,7 @@ nav {
 ul {
     width: 60%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
 }
 
