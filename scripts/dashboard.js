@@ -244,7 +244,7 @@ const atualizaResumo = () => {
         currency: "BRL",
     });
 
-    const containerMensagem = document.querySelector(".container-mensagem");
+    // const containerMensagem = document.querySelector(".container-mensagem");
     const mensagemAlerta = document.querySelector(".msg-alerta");
 
     if (totalReceitas > 0) {
@@ -254,12 +254,12 @@ const atualizaResumo = () => {
     }
 
     setTimeout(() => {
-        if (percentualGasto > 100) {
+        if (saldoAtual < 0) {
             mensagemAlerta.textContent =
                 "Poxa! Você está sem controle financeiro.";
             mensagemAlerta.style.color = "#e23838ff";
             mensagemAlerta.style.fontSize = "1.2rem";
-        } else if (percentualGasto === 100) {
+        } else if (saldoAtual === 0) {
             mensagemAlerta.textContent = "Ops! Você está sem saldo.";
             mensagemAlerta.style.color = "#ff0000ff";
         } else if (percentualGasto >= 90) {
