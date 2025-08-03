@@ -6,17 +6,19 @@ Este projeto nasceu da minha vontade de solidificar conhecimentos essenciais do 
 ✨ O Que Eu Aprendi e Implementei Aqui
 Cada funcionalidade do FinApp foi uma oportunidade de me aprofundar em um conceito específico. Aqui estão os principais destaques do que já está funcional:
 
-💾 Persistência de Dados com localStorage: Para criar uma experiência contínua, implementei o localStorage para salvar e carregar as transações. Isso garante que os dados do usuário permaneçam no navegador, mesmo após a página ser fechada.
+✔️ Alertas Inteligentes de Saúde Financeira: O app agora analisa o percentual de gastos em relação à receita e exibe mensagens dinâmicas e coloridas, oferecendo ao usuário um feedback instantâneo sobre seus hábitos financeiros.
 
-🧠 Manipulação do DOM e Lógica Dinâmica: Uma das partes que mais gostei de desenvolver foi o formulário inteligente. Usando event listeners, o JavaScript altera dinamicamente as opções de "Categoria" e "Forma de Pagamento" com base na escolha entre "Receita" e "Despesa".
+✔️ Exclusão Segura de Transações: A lógica de exclusão foi aprimorada para usar um ID único por transação. Isso garante que a remoção de um item seja precisa e livre de bugs, mesmo que existam lançamentos com valores idênticos.
 
-🎨 Renderização Dinâmica de Componentes: Cada transação que você vê na tela é um template string de HTML inserido dinamicamente no DOM, me dando uma base sólida para entender como frameworks modernos funcionam por baixo dos panos.
+✔️ Persistência de Dados com localStorage: Suas transações são salvas no localStorage do navegador, mantendo os dados seguros mesmo que você feche a página.
 
-✅ Filtro Funcional por Data: Implementei uma funcionalidade de filtro que permite ao usuário buscar transações por uma data específica. Foi um ótimo aprendizado sobre como manipular e comparar datas em JavaScript.
+✔️ Manipulação do DOM e Lógica Dinâmica: O formulário de cadastro é inteligente e altera as opções de categoria conforme o tipo de transação (receita ou despesa), e o dashboard é atualizado em tempo real.
 
-📱 Design Responsivo com CSS Moderno: Utilizei Flexbox, Grid Layout e Media Queries para garantir que a experiência seja agradável tanto em um desktop quanto em um celular.
+✔️ Filtro Funcional por Data: Implementei uma funcionalidade de filtro que permite ao usuário buscar transações por uma data específica.
 
-🛠️ As Ferramentas que utilizei
+✔️ Design Responsivo com CSS Moderno: Utilizei Flexbox, Grid Layout e Media Queries para garantir que a experiência seja agradável tanto em um desktop quanto em um celular.
+
+🛠️ As Ferramentas da Minha Bancada
 Para construir este projeto, me concentrei nos fundamentos do desenvolvimento web:
 
 HTML5 (Estrutura e Semântica)
@@ -30,13 +32,17 @@ Font Awesome & Google Fonts (Para dar aquele toque final no design)
 🚀 Veja o Projeto em Ação!
 A maneira mais fácil de testar o FinApp é acessando a versão online que eu publiquei. Não precisa instalar nada, é só clicar!
 
-➡️ Acessar a Demonstração Online do FinApp http://financecontrl.netlify.app
+➡️ Acessar a Demonstração Online do FinApp finaapp1.netlify.app
+
+<br>
+
+
 
 🌱 Desafios e Próximos Passos (Minha Jornada Continua!)
-Desenvolver o FinApp foi incrível, mas sei que é só o começo. Encontrei desafios, especialmente em como estruturar o código de forma limpa para que fosse fácil de manter.
+Desenvolver o FinApp foi incrível, mas sei que é só o começo. Encontrei desafios e, com eles, oportunidades de melhoria contínua. Meus próximos objetivos são:
 
-É isso que me motiva! Meus próximos objetivos de estudo, que pretendo aplicar aqui, são:
+[ ] Finalizar o Filtro por Categoria: No menu, a opção "Filtrar por Categoria" está visível e a interface para o filtro é criada, mas a lógica de busca ainda não foi conectada. Este é o meu próximo grande desafio.
 
-[ ] Finalizar o Filtro por Categoria: No menu, a opção "Filtrar por Categoria" está visível e a interface para o filtro é criada, mas a lógica de busca ainda não foi conectada. Este é o meu próximo grande desafio e objetivo de estudo para este projeto.
+[ ] Refatorar a Estrutura do Código: Penso em melhorar a organização do código JavaScript, separando as funções em arquivos diferentes por responsabilidade (ex: um arquivo para manipulação do DOM, outro para a lógica de negócio, etc.). Isso tornará o projeto mais limpo, escalável e fácil de manter.
 
-[ ] Refatorar o código: Organizar as funções em módulos para melhorar a legibilidade e manutenção.
+[ ] Adicionar testes unitários: Para garantir que as funções de cálculo e manipulação de dados sejam sempre confiáveis.
